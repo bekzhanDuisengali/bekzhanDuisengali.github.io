@@ -1,0 +1,127 @@
+@media (max-width: 991px){
+    .adv{
+        &__subtext{
+            width: 255px;
+        }
+    }
+}
+@media (max-width: 767px){
+    .promo{
+        &__header{
+            font-size: 40px;
+        }
+        &__subheader{
+            font-size: 22px;
+        }
+    }
+    .adv{
+        &__subtext{
+            width: 190px;
+            font-size: 13px;
+        }
+    }
+    .carousel{
+        &__inner{
+            width: 575px;
+            div{
+                width: 575px;
+                img{
+                    width: 100%;
+                }
+            }
+            
+        }
+    }
+    .catalog{
+        &__tab{
+            width: 176px;
+        }
+    }
+    .title{
+        &_left{
+            font-size: 32px;
+        }
+    }
+    .consultation{
+        &__descr{
+            font-size: 18px;
+        }
+    }
+}
+@media (max-width: 575px){
+    .adv{
+        &__item{
+            img{
+                width: 40px;
+                height: 35px;
+            }
+        }
+        &__subtext{
+            width: 102px;
+            font-size: 10px;
+            line-height: 15px;
+        }
+    }
+    .promo{
+        &__header{
+            font-size: 40px;
+        }
+        &__subheader{
+            font-size: 22px;
+        }
+    }
+    .carousel{
+        &__inner{
+            width: 300px;
+            div{
+                width: 300px;
+                img{
+                    width: 100%;
+                }
+            }
+            li{
+                width: 320px;
+            }
+        }
+    }
+    .button{
+        &_main{
+            height: 40px;
+        }
+    }
+    .catalog{
+        &__tab{
+            width: 75px;
+            div{
+                font-size: 7px;
+            }
+        }
+    }
+    .feedback{
+        &__comment{
+            font-size: 13px;
+            line-height: 17px;
+        }
+        &__name{
+            font-size: 16px;
+        }
+        &__achieve{
+            font-size: 12px;
+        }
+        &__descr{
+            padding-right: 0;
+        }
+        &__block{
+            img{
+                width: 130px;
+                height: 130px;
+            }
+        }
+    }
+    .footer{
+        &__info{
+            width: 266px;
+            height: 285px;
+        }
+    }
+}

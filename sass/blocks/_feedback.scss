@@ -1,0 +1,38 @@
+.feedback{
+    padding: 0 0 57px 0;
+    &__block{
+        margin-top: 60px;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+    }
+    &__descr{
+        margin-left: 60px;
+        font-family: MuseoModerno;
+        padding-right: 62px;
+        margin-bottom: 60px;
+        :last-child{
+            margin-bottom: 0;
+        }
+    }
+    &__name{
+        color: #0D0D0D;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 18px;
+    }
+    &__achieve{
+        color: #646464;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: normal;
+    }
+    &__comment{
+        
+        margin-top: 10px;
+        color: #0D0D0D;
+        font-size: 16px;
+        line-height: 24px;
+    }
+}

@@ -1,0 +1,197 @@
+.catalog{
+    padding: 0 0 79px 0;
+    &__tabs{
+        margin-top: 46px;
+        list-style-type: none;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 0;
+        padding-left: 0;
+    }
+    &__tab{
+        width: 222px;
+        height: 52px;
+        border: 2px solid #D0D0D0;
+        color: #6B6B6B;
+        text-align: center;
+        font-family: MuseoModerno;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 18px; /* 100% */
+        text-transform: uppercase;
+        text-align: center;
+        line-height: 50px;
+        margin-right: 10px;
+        cursor: pointer;
+        &:last-child{
+            margin-right: 0;
+        }
+        &_active{
+            color: #fff;
+            background-color: $main-color;
+            border: none;
+        }
+        transform: skewX(-35deg);
+        div{
+            transform: skewX(35deg);
+        }
+
+    }
+    &__content{
+        margin-top: 60px;
+        display: none;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        margin-bottom: 20px;
+        &_active{
+            display: flex;
+            justify-content: space-evenly;
+        }
+    }
+    &-item{
+        margin-top: 57px;
+        border: 2px solid #E8E8E8;
+        width: 303px;
+        min-height: 442px;
+        background-color: #fff;
+        padding: 20px 26px 26px 20px;
+        overflow: hidden;
+        img{
+            max-width: 100%;
+            height: 200px;
+            display: block;
+            margin: 0 auto;
+        }
+        &__subtitle{
+            color: #0D0D0D;
+            text-align: center;
+            font-family: MuseoModerno;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+            margin-top: 15px;
+        }
+        &__descr{
+            color: #0D0D0D;
+            text-align: center;
+            font-family: MuseoModerno;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 300;
+            line-height: normal;
+            display: flex;
+            width: 240px;
+            height: 41px;
+            justify-content: center;
+            display: block;
+            margin: 15px auto 0 auto;
+        }
+        &__link{
+            color: $main-color;
+            text-align: center;
+            font-family: MuseoModerno;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 14px; /* 100% */
+            text-decoration-line: underline;
+            display: block;
+            margin: 10px auto 0 auto;
+            cursor: pointer;
+        }
+        hr{
+            background-color: #E8E8E8;
+            margin-top: 17px;
+            margin-bottom: 17px;
+        }
+        &__footer{
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin-top: 17px;
+        }
+        &__old-price{
+            color: #555;
+            font-family: MuseoModerno;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 300;
+            line-height: 14px; /* 100% */
+            text-decoration: line-through;
+        }
+        &__price{
+            color: #050505;
+            font-family: MuseoModerno;
+            font-size: 20px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 20px; /* 100% */
+        }
+        &__wrapper{
+            display: flex;
+            width: calc(200% + 40px);
+        }
+        &__content{
+            width: 50%;
+            margin-right: 0px;
+            transform: translateX(-100%);
+            
+            transition: 0.5s all;
+            &_active{
+                transform: translateX(0%);
+                margin-right: 20px;
+            }
+        }
+        &__list{
+            position: relative;
+            width: 50%;
+            margin-left: 20px;
+            transform: translateX(0%);
+            padding-right: 19px;
+            transition: 0.5s all;
+            padding-left: 19px;
+            padding-bottom: 0;
+            list-style-type: none;
+            &_active{
+                transform: translateX(-100%);
+                margin-left: 0;
+            }
+            li{
+                position: relative;
+                color: #555;
+                font-family: MuseoModerno;
+                font-size: 14px;
+                font-style: normal;
+                font-weight: 300;
+                line-height: 21px;
+                margin-bottom: 20px;
+                &::before{
+                    content: '';
+                    position: absolute;
+                    display: block;
+                    left: -12px;
+                    background-color: $main-color;
+                    height: 5px;
+                    width: 5px;
+                    top: 7px;
+                }
+            }
+            
+        }
+        &__back{
+            color: $main-color;
+            position: absolute;
+            bottom: 0;
+            top: 100%;
+            transform: translateX(calc(200% - 19px));
+            font-family: MuseoModerno;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 14px; /* 100% */
+            text-decoration-line: underline;
+        }
+    }   
+}
