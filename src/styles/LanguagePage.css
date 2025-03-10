@@ -1,0 +1,151 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.language-selection-container {
+    font-family: "Radio Canada", sans-serif;
+    color: #000;
+    text-align: center;
+    margin: 0;
+}
+
+.header-language {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #000;
+}
+
+.header-language h1 {
+    margin: 0;
+    color: #FAD02C;
+}
+
+.navbar-language {
+    display: flex;
+    gap: 40px;
+    font-family: "Radio Canada", sans-serif;
+}
+
+.navbar-language a {
+    color: #FAD02C;
+    text-decoration: none;
+    font-weight: bold;
+    font-family: "Radio Canada", sans-serif;
+    top: 50%;
+    padding: 10px;
+    font-size: 20px;
+}
+
+.navbar-language a:hover {
+    color: #FFFFFF;
+}
+
+.sign-up-language {
+    background-color: #FAD02C;
+    color: #000;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-family: "Radio Canada", sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.sign-up-language:hover {
+    background-color: #FCFC16;
+}
+
+.main-language {
+    background-color: #fcd303;
+    color: #000;
+}
+
+.language-content {
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 50px;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 70px;
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+h2 {
+    margin-bottom: 20px;
+}
+
+.language-selection {
+    height: 172px;
+    padding-top: 40px;
+    background: #DCD6D1;
+
+}
+
+.language-options {
+    display: flex;
+    flex-direction: row;
+    margin-left: 25%;
+    gap: 20px;
+    justify-items: center;
+    color: #FCFEFE;
+}
+
+.language-btn {
+    cursor: pointer;
+    width: 200px;
+    height: 50px;
+    background: black;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 30px;
+    font-weight: 800;
+    font-size: 30px;
+    text-align: center;
+    color: #FCFEFE;
+    margin-top: 40px;
+}
+
+.language-btn:hover {
+    transform: scale(1.05);
+}
+
+.language-btn.selected {
+    background-color: #ffcc00;
+    color: #000;
+    border-color: #ffcc00;
+}
+
+.lang-code {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.start-language {
+    cursor: pointer;
+    width: 200px;
+    height: 56px;
+    margin-top: 10px;
+    background: #F3BD29;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 30px;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 25px;
+    text-align: center;
+    color: #161819;
+}
+
+.start-language:hover {
+    background-color: #FCFC16;
+    transform: scale(1.1);
+}
+
+.error-message {
+    color: red;
+    font-weight: bold;
+    margin-bottom: 20px;
+}

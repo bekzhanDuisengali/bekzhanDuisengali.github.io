@@ -1,0 +1,199 @@
+
+.quiz-container {
+    font-family: "Radio Canada", sans-serif;
+    color: #000;
+    text-align: center;
+    margin: 0;
+}
+
+
+.quiz-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #000;
+}
+
+.quiz-header h1 {
+    margin: 0;
+    color: #FAD02C;
+}
+
+.logo-link {
+    color: #FAD02C;
+    text-decoration: none;
+}
+
+.logo-link:hover {
+    text-decoration: none;
+    color: #FCFC16;
+}
+
+.navbar-quiz {
+    display: flex;
+    gap: 40px;
+    font-family: "Radio Canada", sans-serif;
+}
+
+.nav-link-quiz {
+    color: #FAD02C;
+    text-decoration: none;
+    font-weight: bold;
+    font-family: "Radio Canada", sans-serif;
+    top: 50%;
+    padding: 10px;
+    font-size: 20px;
+}
+
+.nav-link-quiz:hover {
+    color: #FFFFFF;
+}
+
+.sign-up-quiz {
+    background-color: #FAD02C;
+    color: #000;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-family: "Radio Canada", sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.sign-up-quiz:hover {
+    background-color: #FCFC16;
+}
+
+
+.quiz-content {
+    background-color: #fcd303;
+    color: #000;
+}
+
+.question-container {
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 1.5;
+    text-align: center;
+    margin: 50px auto;
+    padding: 0 5%;
+    position: relative;
+}
+
+.question-image {
+    margin: 20px auto;
+    display: block;
+    max-width: 150px;
+    max-height: 150px;
+    position: static;
+}
+
+
+
+.quiz-content h2 {
+    font-size: 25px;
+    text-align: left;
+    margin-bottom: 10px;
+    font-weight: 600;
+    margin-left: 50px;
+}
+
+
+
+
+.quiz-navigation {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 80px;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.previous-button {
+    color: #FAD02C;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 25px;
+    width: 200px;
+    height: 56px;
+    left: 91px;
+    top: 544px;
+    background: #161819;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 30px;
+    cursor: pointer;
+
+}
+
+.previous-button:hover {
+    background-color: #444444;
+}
+
+
+.next-button {
+    cursor: pointer;
+    width: 200px;
+    height: 56px;
+    left: 1073px;
+    top: 544px;
+    background: #F3BD29;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 30px;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 25px;
+    text-align: center;
+    color: #161819;
+}
+
+.next-button:hover {
+    background-color: #FCFC16;
+}
+
+.answer-container {
+    height: 300px;
+    padding-top: 40px;
+    background: #DCD6D1;
+
+
+}
+
+.quiz-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    justify-items: center;
+    color: #FCFEFE;
+}
+.option {
+    cursor: pointer;
+    display: inline-block;
+    width: auto;
+    padding: 10px 20px;
+    background: black;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 30px;
+    font-weight: 800;
+    font-size: 20px;
+    text-align: center;
+    color: #FCFEFE;
+    margin-top: 20px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.option:hover {
+    background-color: #444444;
+    transform: scale(1.05);
+}
+
+
+.selected-option {
+    background-color: #4CAF50;
+    color: white;
+    border: 2px solid #3e8e41;
+    transform: scale(1.1);
+}
+

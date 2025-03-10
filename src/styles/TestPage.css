@@ -1,0 +1,171 @@
+
+
+
+.test-page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #e6e6fa;
+}
+
+
+.test-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #000;
+}
+
+.logo {
+    font-size: 24px;
+    color: #ffd700;
+}
+
+.navbar-test {
+    display: flex;
+    gap: 40px;
+    font-family: "Radio Canada", sans-serif;
+}
+
+.nav-link-test {
+    color: #FFFF00;
+    text-decoration: none;
+    font-weight: bold;
+    font-family: "Radio Canada", sans-serif;
+    top: 50%;
+    padding: 10px;
+    font-size: 20px;
+}
+
+.nav-link-test:hover {
+    color: #FAD02C;
+}
+
+.sign-up-test {
+    background-color: #FFFF00;
+    color: #000;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-family: "Radio Canada", sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.sign-up-test:hover {
+    background-color: #f1c40f;
+}
+
+
+.test-main {
+    flex-grow: 1;
+    text-align: center;
+    padding: 40px 20px;
+    background-color: #e6e6fa;
+    color: #333;
+    margin-right: 5%;
+    margin-left: 5%;
+}
+
+.main-title {
+    font-size: 70px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.main-description {
+    font-size: 30px;
+    margin-bottom: 80px;
+    font-weight: 600;
+    text-align: left;
+    width: 80%;
+    margin-left: 150px;
+}
+
+.instructions {
+    margin-bottom: 80px;
+    margin-left: 150px;
+}
+
+.instructions-title {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.instructions-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.instruction-item {
+    display: flex;
+    align-items: center;
+    font-size: 25px;
+    font-weight: 600;
+    margin-bottom: 30px;
+}
+
+.number-circle {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    background-color: black;
+    color: #ffffff;
+    font-weight: bold;
+    border-radius: 50%;
+    box-sizing: border-box;
+    border: 5px solid #FCFC16;
+    margin-right: 10px;
+
+}
+
+.start-test-button {
+    color: #FFFF00;
+    border: none;
+    padding: 12px 24px;
+    font-size: 30px;
+    font-weight: 600;
+    cursor: pointer;
+    width: 300px;
+    height: 60px;
+    background: #161819;
+    border-radius: 30px;
+
+}
+
+.start-test-button:hover {
+    background-color: #444;
+    transform: scale(1.1);
+}
+
+
+.test-footer {
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    height: 100px;
+    font-size: 25px;
+}
+
+.footer-link {
+    color: #FFFF00;
+    text-decoration: none;
+}
+
+.footer-link:hover {
+    color: #f1c40f;
+}
+
+.signup {
+    text-decoration: none;
+    color: black;
+}
