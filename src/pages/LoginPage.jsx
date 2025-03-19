@@ -11,7 +11,6 @@ class LoginPage extends Component {
                         <img src={globeYellowIcon} alt="Globe Icon" className="globe-icon-login"/>
                     </div>
                     <nav className="navbar-link-login">
-                        <a href="/create-room" className="nav-link-login">Create a Room</a>
                         <a href="/room" className="nav-link-login">Select Rooms</a>
                         <a href="/login" className="nav-link-login">Log In</a>
                         <a href="/signup" className="signup-button-login-nav">Sign Up</a>
@@ -32,7 +31,9 @@ class LoginPage extends Component {
                             className="input-field password-input"
                         />
                         <button type="submit" className="login-button">
-                            Log In
+                            <a className="login" href="/profile">
+                                Log In
+                            </a>
                         </button>
                     </form>
                     <p className="signup-redirect">

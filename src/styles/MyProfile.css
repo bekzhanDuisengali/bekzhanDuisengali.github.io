@@ -1,0 +1,190 @@
+.profile-container {
+    font-family: "Raleway", sans-serif;
+    background-color: #1E1E1E;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    min-height: 100vh;
+}
+
+.profile-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+.globe-icon img {
+    width: 30px;
+}
+
+.navigation {
+    display: flex;
+    gap: 40px;
+}
+
+.select-rooms {
+    color: #FFFF00;
+    font-weight: bold;
+    font-size: 20px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.select-rooms:hover {
+    color: #FAD02C;
+}
+
+.edit-button {
+    background: yellow;
+    border: none;
+    border-radius: 20px;
+    padding: 10px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.edit-button a {
+    color: black;
+}
+
+.edit-button:hover {
+    background-color: #FAD02C;
+}
+
+.edit-button:hover {
+
+}
+
+.profile-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-top: 30px;
+    gap: 50px;
+    padding: 0 50px;
+    margin-left: 15%;
+    margin-right: 5%;
+}
+
+
+.left-section {
+    flex: 1;
+    text-align: left;
+}
+
+.avatar-section {
+    text-align: start;
+    background-color: #00078C;
+}
+
+.avatar {
+    position: relative;
+    display: inline-block;
+    border: none;
+}
+
+.avatar img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+.rating {
+    position: absolute;
+    top: -5px;
+    right: -60px;
+    background: yellow;
+    border-radius: 50%;
+    padding: 5px 10px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #1E1E1E;
+}
+
+.add-friend-button {
+    background: yellow;
+    border: none;
+    padding: 8px 15px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 10px;
+}
+
+.add-friend-button:hover {
+    transform: translateY(-2px);
+}
+
+.add-friend-button img {
+    width: 18px;
+    height: 18px;
+}
+
+.favorite-topics {
+    margin-top: 80px;
+}
+
+.favorite-topics h3 {
+    font-size: 30px;
+}
+
+.topic {
+    font-size: 22px;
+    color: yellow;
+    font-weight: bold;
+}
+
+.right-section {
+    flex: 1;
+    text-align: left;
+}
+
+.languages h3, .achievements h3 {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.languages p {
+    font-size: 22px;
+}
+
+.intermediate, .advanced {
+    color: yellow;
+    font-weight: bold;
+}
+
+.achievements {
+    margin-top: 80px;
+}
+
+.achievement-icons {
+    display: flex;
+    gap: 15px;
+}
+
+.achievement-icons img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+
+/* Footer */
+.profile-footer {
+    margin-top: 100px;
+    font-size: 18px;
+}
+
+.join-room {
+    color: #FFFF00;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.join-room:hover {
+    color: #FAD02C;
+}

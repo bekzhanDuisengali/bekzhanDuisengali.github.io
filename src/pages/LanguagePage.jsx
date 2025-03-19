@@ -1,12 +1,11 @@
 import React, { Component } from "react";
 import { withRouter } from "../Components/withRouter";
 import "../styles/LanguagePage.css";
-import {Link} from "react-router-dom";
 
 class LanguagePage extends Component {
     state = {
-        selectedLanguage: null,
-        showError: false,
+        selectedLanguage: null, // Holds the selected language
+        showError: false, // To show the error notification
     };
 
     handleLanguageSelect = (language) => {
@@ -19,9 +18,12 @@ class LanguagePage extends Component {
         if (!selectedLanguage) {
             this.setState({ showError: true });
         } else {
+            localStorage.setItem("selectedLanguage", selectedLanguage);
             this.props.navigate("/quiz");
         }
     };
+
+
 
     render() {
         const { selectedLanguage, showError } = this.state;
@@ -34,14 +36,12 @@ class LanguagePage extends Component {
 
         return (
             <div className="language-selection-container">
-
                 <header className="header-language">
                     <h1><a href="/" className="logo-link">Lexio</a></h1>
                     <nav className="navbar-language">
-                        <a href="#create-room">Create a Room</a>
-                        <a href="#select-rooms">Select Rooms</a>
-                        <a href="#login">Log In</a>
-                        <button className="sign-up-language">Sign Up</button>
+                        <a href="/room">Select Rooms</a>
+                        <a href="/login">Log In</a>
+                        <button className="sign-up-language"><a className="signup" href="/signup">Sign Up</a></button>
                     </nav>
                 </header>
 

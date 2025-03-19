@@ -8,6 +8,10 @@ import LanguagePage from "./pages/LanguagePage";
 import RoomSelectionPage from "./pages/RoomSelectionPage";
 import LoginPage from "./pages/LoginPage";
 import SignupPage from "./pages/SignupPage";
+import RoomPage from "./pages/RoomPage";
+import ProfilePage from "./pages/ProfilePage";
+import MyProfile from "./pages/MyProfile";
+import EditPage from "./pages/EditPage";
 
 class App extends Component {
     render() {
@@ -21,6 +25,10 @@ class App extends Component {
                     <Route path="/room" element={<RoomSelectionPage />} />
                     <Route path="/login" element={<LoginPage />} />
                     <Route path="/signup" element={<SignupPage />} />
+                    <Route path="/roompage" element={<RoomPage />} />
+                    <Route path="/profile" element={<ProfilePage />} />
+                    <Route path="/myprofile" element={<MyProfile />} />
+                    <Route path="/edit" element={<EditPage />} />
                 </Routes>
             </Router>
         );

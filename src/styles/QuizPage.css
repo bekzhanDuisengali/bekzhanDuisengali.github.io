@@ -1,11 +1,9 @@
-
 .quiz-container {
-    font-family: "Radio Canada", sans-serif;
+    font-family: "Raleway", sans-serif;
     color: #000;
     text-align: center;
     margin: 0;
 }
-
 
 .quiz-header {
     display: flex;
@@ -18,11 +16,13 @@
 .quiz-header h1 {
     margin: 0;
     color: #FAD02C;
+    font-family: "Raleway", sans-serif;
 }
 
 .logo-link {
     color: #FAD02C;
     text-decoration: none;
+    font-family: "Raleway", sans-serif;
 }
 
 .logo-link:hover {
@@ -33,21 +33,21 @@
 .navbar-quiz {
     display: flex;
     gap: 40px;
-    font-family: "Radio Canada", sans-serif;
+    font-family: "Raleway", sans-serif;
 }
 
 .nav-link-quiz {
     color: #FAD02C;
     text-decoration: none;
     font-weight: bold;
-    font-family: "Radio Canada", sans-serif;
+    font-family: "Raleway", sans-serif;
     top: 50%;
     padding: 10px;
     font-size: 20px;
 }
 
 .nav-link-quiz:hover {
-    color: #FFFFFF;
+    color: #FFFF00;
 }
 
 .sign-up-quiz {
@@ -57,15 +57,18 @@
     padding: 10px 20px;
     border-radius: 25px;
     cursor: pointer;
-    font-family: "Radio Canada", sans-serif;
+    font-family: "Raleway", sans-serif;
     font-size: 20px;
     font-weight: bold;
+}
+
+.sign-up-quiz a {
+    color: black;
 }
 
 .sign-up-quiz:hover {
     background-color: #FCFC16;
 }
-
 
 .quiz-content {
     background-color: #fcd303;
@@ -80,6 +83,7 @@
     margin: 50px auto;
     padding: 0 5%;
     position: relative;
+    font-family: "Raleway", sans-serif;
 }
 
 .question-image {
@@ -90,18 +94,15 @@
     position: static;
 }
 
-
-
 .quiz-content h2 {
     font-size: 25px;
     text-align: left;
     margin-bottom: 10px;
     font-weight: 600;
     margin-left: 50px;
+    font-family: "Raleway", sans-serif;
+
 }
-
-
-
 
 .quiz-navigation {
     display: flex;
@@ -109,6 +110,7 @@
     margin-top: 80px;
     margin-left: 50px;
     margin-right: 50px;
+
 }
 
 .previous-button {
@@ -124,6 +126,7 @@
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 30px;
     cursor: pointer;
+    font-family: "Raleway", sans-serif;
 
 }
 
@@ -146,6 +149,7 @@
     font-size: 25px;
     text-align: center;
     color: #161819;
+    font-family: "Raleway", sans-serif;
 }
 
 .next-button:hover {
@@ -156,8 +160,6 @@
     height: 300px;
     padding-top: 40px;
     background: #DCD6D1;
-
-
 }
 
 .quiz-options {
@@ -182,13 +184,13 @@
     margin-top: 20px;
     white-space: nowrap;
     text-overflow: ellipsis;
+    font-family: "Raleway", sans-serif;
 }
 
 .option:hover {
     background-color: #444444;
     transform: scale(1.05);
 }
-
 
 .selected-option {
     background-color: #4CAF50;

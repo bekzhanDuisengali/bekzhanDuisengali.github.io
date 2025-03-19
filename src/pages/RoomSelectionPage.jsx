@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "../styles/RoomSelectionPage.css";
-
 import travelIcon from "../assets/travel.png";
 import dailyLifeIcon from "../assets/daily-life.png";
 import foodIcon from "../assets/food.png";
@@ -85,7 +84,7 @@ class RoomSelectionPage extends Component {
                                 <option>Intermediate</option>
                                 <option>Advanced</option>
                             </select>
-                            <button className="create-room-btn">Create Room</button>
+                            <button className="create-room-btn"><a href="/roompage" className="create-room-btn">Create Room</a></button>
                         </div>
                     </div>
                     <div className="room-display">

@@ -12,7 +12,6 @@ class TestPage extends Component {
                         <img src={globeYellowIcon} alt="Globe" className="nav-icon"/>
                     </div>
                     <nav className="navbar-test">
-                    <a href="#" className="nav-link-test">Create a Room</a>
                         <a href="/room" className="nav-link-test">Select Rooms</a>
                         <a href="/login" className="nav-link-test">Log In</a>
                         <button className="sign-up-test"><a href="/signup" className="signup">Sign Up</a></button>
@@ -40,7 +39,7 @@ class TestPage extends Component {
                         </ul>
                     </section>
                     <Link to="/language" className="start-test-button-link">
-                    <button className="start-test-button">Start The Test</button>
+                        <button className="start-test-button">Start The Test</button>
                     </Link>
                 </main>
 

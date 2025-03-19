@@ -1,0 +1,160 @@
+.edit-container {
+    background-color: #1E1E1E;
+    height: 100%;
+}
+
+.settings-container {
+    font-family: "Raleway", sans-serif;
+    background-color: #1E1E1E;
+    color: white;
+    max-width: 700px;
+    margin: 0 auto;
+    padding-top: 70px;
+    padding-left: 20px;
+    padding-bottom: 80px;
+    text-align: left;
+}
+
+.section-title {
+    font-size: 22px;
+    font-weight: bold;
+    margin: 20px 0 10px;
+}
+
+.settings-section {
+    border-top: 1px solid gray;
+    margin-bottom: 20px;
+}
+
+.setting-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid gray;
+    font-size: 18px;
+}
+
+.value {
+    color: gray;
+    flex-grow: 1;
+    text-align: right;
+    margin-right: 10px;
+}
+
+.change {
+    color: yellow;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.edit-fields {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px 0;
+}
+
+.edit-fields label {
+    color: white;
+    font-size: 16px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+
+.edit-fields input,
+.edit-fields select {
+    background: #333;
+    border: 1px solid gray;
+    color: white;
+    padding: 8px;
+    font-size: 16px;
+    transition: border 0.3s ease;
+    border-radius: 5px;
+
+}
+
+.edit-fields input:focus,
+.edit-fields select:focus {
+    border: 2px solid yellow;
+    outline: none;
+}
+
+.edit-fields input.error,
+.edit-fields select.error {
+    border: 2px solid red;
+}
+
+.error-text {
+    color: red;
+    font-size: 14px;
+    margin-top: -8px;
+}
+
+.edit-fields button {
+    background: yellow;
+    border: none;
+    padding: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-family: "Raleway", sans-serif;
+
+}
+
+.edit-fields input,
+.edit-fields select {
+    background: #060606;
+    border: 1px solid gray;
+    color: white;
+    padding: 8px;
+    font-size: 16px;
+    transition: border 0.3s ease;
+    font-family: "Raleway", sans-serif;
+
+}
+
+.edit-fields input:focus,
+.edit-fields select:focus {
+    border: 2px solid yellow;
+    outline: none;
+}
+
+.edit-fields input.error,
+.edit-fields select.error {
+    border: 2px solid red;
+}
+
+.error-text {
+    color: red;
+    font-size: 14px;
+    margin-top: -8px;
+}
+
+.edit-fields button {
+    background-color: #FFFF00;
+    border: none;
+    padding: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+    border-radius: 5px;
+}
+
+.button-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.cancel-btn {
+    background-color: #060606;
+    color: red;
+    border: none;
+    padding: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+    border-radius: 5px;
+}

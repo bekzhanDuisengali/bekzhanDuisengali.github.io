@@ -27,7 +27,6 @@ class Main extends Component {
                 <header className="header">
                     <img src={globeIcon} alt="Globe" className="nav-icon" />
                     <nav className="navbar-main">
-                        <a href="#create-room" className="nav-link-main">Create a Room</a>
                         <a href="/room" className="nav-link-main">Select Rooms</a>
                         <a href="/login" className="nav-link-main">Log In</a>
                         <button className="sign-up-main"><a href="/signup" className="signup-link">Sign Up</a></button>
@@ -69,10 +68,10 @@ class Main extends Component {
 
                             <div className="cta-buttons">
                                 <Link to="/signup" className="signup-link">
-                                <button className="sign-up-button">Sign Up!</button>
+                                    <button className="sign-up-button">Sign Up!</button>
                                 </Link>
                                 <Link to="/test" className="test-button-link">
-                                <button className="test-button">Take Test</button>
+                                    <button className="test-button">Take Test</button>
                                 </Link>
                             </div>
 

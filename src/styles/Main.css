@@ -1,6 +1,6 @@
 body {
     margin: 0;
-    font-family: "Radio Canada", sans-serif;
+    font-family: "Raleway", sans-serif;
     background-color: #ffd700;
     color: #333;
 }
@@ -31,7 +31,7 @@ body {
 .navbar-main {
     display: flex;
     gap: 40px;
-    font-family: "Radio Canada", sans-serif;
+    font-family: "Raleway", sans-serif;
 
 
 }
@@ -40,7 +40,7 @@ body {
     text-decoration: none;
     color: black;
     font-weight: bold;
-    font-family: "Radio Canada", sans-serif;
+    font-family: "Raleway", sans-serif;
     top: 50%;
     padding: 10px;
     font-size: 20px;
@@ -57,7 +57,7 @@ body {
     padding: 10px 20px;
     border-radius: 25px;
     cursor: pointer;
-    font-family: "Radio Canada", sans-serif;
+    font-family: "Raleway", sans-serif;
     font-size: 20px;
 
 }
@@ -86,9 +86,7 @@ body {
     height: 25px;
     left: 450px;
     top: 140px;
-
 }
-
 
 .title {
     font-size: 220px;
@@ -97,6 +95,7 @@ body {
     position: relative;
     margin-bottom: 0px;
     margin-top: -15px;
+    font-family: "Raleway", sans-serif;
 }
 
 .title-highlight {
@@ -118,7 +117,7 @@ body {
 
 .subtitle {
     gap: 0;
-    font-family: "Radio Canada", sans-serif;
+    font-family: "Raleway", sans-serif;
 }
 .subtitle-1 {
     font-size: 57px;
@@ -140,8 +139,6 @@ body {
     margin-top: 200px;
 }
 
-
-
 .sign-up-button {
     background-color: black;
     color: white;
@@ -152,6 +149,7 @@ body {
     margin: 0 10px;
     cursor: pointer;
     border-radius: 35px;
+    font-family: "Raleway", sans-serif;
 }
 
 
@@ -166,7 +164,7 @@ body {
     margin: 0 10px;
     cursor: pointer;
     border-radius: 35px;
-
+    font-family: "Raleway", sans-serif;
 }
 
 .sign-up-button:hover {
@@ -214,6 +212,7 @@ body {
     border-radius: 10px;
     background-color: black;
     color: white;
+    font-family: "Raleway", sans-serif;
 
 }
 .content {
@@ -226,15 +225,15 @@ body {
     border-radius: 15px;
     padding: 20px;
     gap: 0px;
-}
+    font-family: "Raleway", sans-serif;
 
+}
 
 .man-icon {
     width: 150px;
     height: auto;
     margin-bottom: 0;
 }
-
 
 .popular-reviews {
     margin-top: 0;
@@ -247,20 +246,20 @@ body {
     height: 60px;
 }
 
-
 .reviews-list {
     margin-top: 0px;
     background-color: #EAE4DF;
     padding: 10px;
     font-size: 15px;
     color: black;
-    font-family: "Radio Canada", sans-serif;
+    font-family: "Raleway", sans-serif;
     text-align: left;
     box-sizing: border-box;
     width: 100%;
     max-width: 300px;
     border: 3px solid #000000;
     border-radius: 25px 0px 0px 21px;
+
 }
 
 .review-item {
@@ -268,21 +267,21 @@ body {
 }
 
 .sec-title {
-    font-family: "Radio Canada", sans-serif;
+    font-family: "Raleway", sans-serif;
     font-size: 30px;
     font-weight: bold;
     margin: 0 0 10px;
 }
 
 .third-title {
-    font-family: "Radio Canada", sans-serif;
+    font-family: "Raleway", sans-serif;
     font-size: 30px;
     font-weight: bold;
     margin: 0 0 10px;
 }
 
 .description {
-    font-family: Arial, sans-serif;
+    font-family: "Raleway", sans-serif;
     font-size: 15px;
     line-height: 1.5;
 }
@@ -304,7 +303,6 @@ body {
     );
     z-index: 0;
 }
-
 
 .decorations {
     position: absolute;
@@ -387,16 +385,6 @@ body {
 
 }
 
-
-
-/*.fourth-title {*/
-/*    margin-top: 80px;*/
-/*    color: black;*/
-/*    font-weight: bold;*/
-/*    font-size: 40px;*/
-/*}*/
-
-
 .practice-container {
     padding: 20px;
     margin-top: 150px;
@@ -408,11 +396,12 @@ body {
 
 .practice-title {
     margin-top: 40px;
-    color: black;
     font-size: 36px;
     font-weight: bold;
     margin-bottom: 60px;
     color: #000;
+    font-family: "Raleway", sans-serif;
+
 }
 
 .practice-options {
@@ -422,6 +411,7 @@ body {
 }
 
 .practice-option {
+    font-family: "Raleway", sans-serif;
     background-color: #fff;
     border-radius: 15px;
     padding: 20px;
@@ -459,6 +449,8 @@ body {
     border-radius: 25px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    font-family: "Raleway", sans-serif;
+
 }
 
 .join-button.highlight {
@@ -477,11 +469,10 @@ body {
 }
 
 
-
 .footer {
     background-color: black;
     color: #A49B8A;
-
+    font-family: "Raleway", sans-serif;
     padding: 10px;
     font-size: 18px;
 }
