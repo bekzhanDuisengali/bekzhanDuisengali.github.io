@@ -1,63 +1,75 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../styles/SignupPage.css";
-import globeYellowIcon from "../assets/globeYellow.png";
 
-class SignupPage extends Component {
-    render() {
-        return (
-            <div className="signup-page">
-                <header className="navbar-signup">
-                    <div className="navbar-left-signup">
-                        <img src={globeYellowIcon} alt="Globe Icon" className="globe-icon"/>
-                    </div>
-                    <nav className="navbar-links-signup">
-                        <a href="/create-room" className="nav-link-signup">Create a Room</a>
-                        <a href="/room" className="nav-link-signup">Select Rooms</a>
-                        <a href="/login" className="nav-link-signup">Log In</a>
-                        <a href="/signup" className="signup-button-navbar">Sign Up</a>
-                    </nav>
-                </header>
+const SignupPage = () => {
+    const [username, setUsername] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [error, setError] = useState(null);
+    const navigate = useNavigate();
 
-                <main className="signup-form-container">
-                    <h1 className="signup-title">Create an account</h1>
-                    <p className="signup-description">
-                        Join <span className="highlight">Lexio</span> and start practicing
-                        languages with people around the world
-                    </p>
-                    <form className="signup-form">
-                        <input
-                            type="text"
-                            placeholder="Username"
-                            className="input-field"
-                        />
-                        <input
-                            type="email"
-                            placeholder="Email"
-                            className="input-field"
-                        />
-                        <input
-                            type="password"
-                            placeholder="Password"
-                            className="input-field"
-                        />
-                        <input
-                            type="password"
-                            placeholder="Confirm Password"
-                            className="input-field"
-                        />
-                        <button type="submit" className="signup-button-main">
-                            Sign Up
-                        </button>
-                    </form>
-                </main>
-                <footer className="signup-footer">
-                    <p>
-                        Ready to start practicing? <a href="/room" className="footer-link">Join a room now!</a>
-                    </p>
-                </footer>
-            </div>
-        );
-    }
-}
+    const handleSignup = async (e) => {
+        e.preventDefault();
+        setError(null);
+
+        if (!username || !email || !password) {
+            setError("Все поля обязательны");
+            return;
+        }
+
+        if (password.length < 6) {
+            setError("Пароль должен быть не менее 6 символов");
+            return;
+        }
+
+        try {
+            const response = await fetch("http://localhost:5000/api/auth/register", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ username, email, password }),
+            });
+
+            const data = await response.json();
+
+            if (!response.ok) {
+                throw new Error(data.error || "Ошибка регистрации");
+            }
+
+            alert("Регистрация успешна!");
+            navigate("/login");
+        } catch (err) {
+            setError(err.message);
+        }
+    };
+
+    return (
+        <div className="signup-page">
+            <h1>Регистрация</h1>
+            <form onSubmit={handleSignup} className="signup-form">
+                {error && <p className="error-message">{error}</p>}
+                <input
+                    type="text"
+                    placeholder="Username"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                />
+                <input
+                    type="email"
+                    placeholder="Email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                />
+                <input
+                    type="password"
+                    placeholder="Password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                />
+                <button type="submit">Зарегистрироваться</button>
+            </form>
+        </div>
+    );
+};
 
 export default SignupPage;
