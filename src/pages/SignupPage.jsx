@@ -7,24 +7,28 @@ const SignupPage = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState(null);
+    const [isSubmitting, setIsSubmitting] = useState(false);
     const navigate = useNavigate();
 
     const handleSignup = async (e) => {
         e.preventDefault();
         setError(null);
+        setIsSubmitting(true);
 
         if (!username || !email || !password) {
             setError("Все поля обязательны");
+            setIsSubmitting(false);
             return;
         }
 
         if (password.length < 6) {
             setError("Пароль должен быть не менее 6 символов");
+            setIsSubmitting(false);
             return;
         }
 
         try {
-            const response = await fetch("http://localhost:5000/api/auth/register", {
+            const response = await fetch("http://localhost:5001/api/auth/register", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ username, email, password }),
@@ -40,6 +44,8 @@ const SignupPage = () => {
             navigate("/login");
         } catch (err) {
             setError(err.message);
+        } finally {
+            setIsSubmitting(false);
         }
     };
 
