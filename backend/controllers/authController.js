@@ -21,8 +21,13 @@ exports.registerUser = async (req, res) => {
             'INSERT INTO users (username, email, password) VALUES ($1, $2, $3) RETURNING *',
             [username, email, hashedPassword]
         );
+        const token = jwt.sign({ userId: newUser.rows[0].id }, process.env.JWT_SECRET, { expiresIn: '1h' });
 
-        res.status(201).json({ message: 'Пользователь создан', user: newUser.rows[0] });
+        res.status(201).json({
+            message: 'Пользователь создан',
+            user: newUser.rows[0],
+            token
+        });
     } catch (err) {
         console.error('Ошибка при регистрации:', err);
         res.status(500).json({ error: 'Ошибка регистрации' });
@@ -38,7 +43,7 @@ exports.loginUser = async (req, res) => {
         const isMatch = await bcrypt.compare(password, user.rows[0].password);
         if (!isMatch) return res.status(400).json({ error: 'Пароль неверный' });
 
-        const token = jwt.sign({ id: user.rows[0].id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+        const token = jwt.sign({ userId: user.rows[0].id }, process.env.JWT_SECRET, { expiresIn: '1h' });
         res.json({ token });
     } catch (err) {
         console.error('Ошибка при входе:', err);

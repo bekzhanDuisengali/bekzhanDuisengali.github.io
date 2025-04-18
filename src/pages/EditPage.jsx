@@ -179,20 +179,42 @@ const EditPage = () => {
                         {editingField === "dob" && (
                             <div className="edit-fields">
                                 <select className="date-field">
-                                    <option>15</option>
+                                    {Array.from({ length: 31 }, (_, i) => (
+                                        <option key={i + 1} value={i + 1}>
+                                            {i + 1}
+                                        </option>
+                                    ))}
                                 </select>
+
                                 <select className="date-field">
-                                    <option>September</option>
+                                    {[
+                                        "January", "February", "March", "April", "May", "June",
+                                        "July", "August", "September", "October", "November", "December"
+                                    ].map((month, index) => (
+                                        <option key={index} value={month}>
+                                            {month}
+                                        </option>
+                                    ))}
                                 </select>
+
                                 <select className="date-field">
-                                    <option>2004</option>
+                                    {Array.from({ length: 100 }, (_, i) => {
+                                        const year = new Date().getFullYear() - i;
+                                        return (
+                                            <option key={year} value={year}>
+                                                {year}
+                                            </option>
+                                        );
+                                    })}
                                 </select>
+
                                 <div className="button-group">
                                     <button>Save</button>
                                     <button className="cancel-btn" onClick={handleCancel}>Cancel</button>
                                 </div>
                             </div>
                         )}
+
                     </div>
                 </div>
             </div>

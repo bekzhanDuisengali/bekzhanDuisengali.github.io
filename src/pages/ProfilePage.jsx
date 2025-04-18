@@ -31,10 +31,10 @@ class ProfilePage extends Component {
                                 </div>
                             </div>
                             <h2 className="name">Daniil</h2>
-                            <button className="add-friend-button">
-                                <img src={addFriendIcon} alt="Add Friend" />
-                                Add Friend
-                            </button>
+                            {/*<button className="add-friend-button">*/}
+                            {/*    <img src={addFriendIcon} alt="Add Friend" />*/}
+                            {/*    Add Friend*/}
+                            {/*</button>*/}
                         </div>
 
                         <div className="favorite-topics">

@@ -19,8 +19,7 @@ class LanguagePage extends Component {
             this.setState({ showError: true });
         } else {
             localStorage.setItem("selectedLanguage", selectedLanguage);
-            this.props.navigate("/quiz");
-        }
+            this.props.navigate(`/quiz/${selectedLanguage}`);        }
     };
 
 
@@ -29,9 +28,9 @@ class LanguagePage extends Component {
         const { selectedLanguage, showError } = this.state;
 
         const languages = [
-            {name: "English" },
-            {name: "French" },
-            {name: "Spanish" },
+            { name: "English"},
+            { name: "French"},
+            { name: "Spanish"},
         ];
 
         return (
