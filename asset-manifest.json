@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/static/css/main.ec8919a5.css",
+    "main.js": "/static/js/main.8eb6a38e.js",
+    "static/js/488.a604befe.chunk.js": "/static/js/488.a604befe.chunk.js",
+    "static/media/achievement3.jpg": "/static/media/achievement3.0eef2869ed5c77c63fd1.jpg",
+    "static/media/achievement1.jpg": "/static/media/achievement1.31eba2e07ed556e44cc8.jpg",
+    "static/media/achievement2.jpg": "/static/media/achievement2.06bdd4206f3059199e7a.jpg",
+    "static/media/man.png": "/static/media/man.6cdc74f7a583f729ce48.png",
+    "static/media/daily-life.png": "/static/media/daily-life.49642d5e2ba7cad59816.png",
+    "static/media/globe.png": "/static/media/globe.2f2f8d24d91146d9262c.png",
+    "static/media/technology.png": "/static/media/technology.92c4c4208d3163711004.png",
+    "index.html": "/index.html",
+    "main.ec8919a5.css.map": "/static/css/main.ec8919a5.css.map",
+    "main.8eb6a38e.js.map": "/static/js/main.8eb6a38e.js.map",
+    "488.a604befe.chunk.js.map": "/static/js/488.a604befe.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ec8919a5.css",
+    "static/js/main.8eb6a38e.js"
+  ]
+}
