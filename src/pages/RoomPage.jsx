@@ -719,7 +719,7 @@ const RoomPage = () => {
     };
     const handleExit = async () => {
         try {
-            await fetch(`http://localhost:5001/api/rooms/close/${roomId}`, {
+            await fetch(`${process.env.REACT_APP_API_URL}/api/rooms/close/${roomId}`, {
                 method: 'GET'
             });
         } catch (err) {
@@ -731,7 +731,7 @@ const RoomPage = () => {
     useEffect(() => {
         const fetchUsers = async () => {
             try {
-                const res = await fetch(`http://localhost:5001/api/rooms/room-users?roomId=${roomId}`);
+                const res = await fetch(`${process.env.REACT_APP_API_URL}/api/rooms/room-users?roomId=${roomId}`);
                 if (!res.ok) {
                     throw new Error(`HTTP error! Status: ${res.status}`);
                 }

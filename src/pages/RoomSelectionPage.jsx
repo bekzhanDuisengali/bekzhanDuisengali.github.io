@@ -57,7 +57,7 @@ const RoomSelectionPage = () => {
     }, []);
 
     useEffect(() => {
-        fetch("http://localhost:5001/api/topics")
+        fetch(`${process.env.REACT_APP_API_URL}/api/topics`)
             .then(res => res.json())
             .then(setTopicFilters)
             .catch(err => console.error("Ошибка загрузки тем:", err));
@@ -69,7 +69,7 @@ const RoomSelectionPage = () => {
     useEffect(() => {
         const fetchActiveRooms = async () => {
             try {
-                const res = await fetch("http://localhost:5001/api/rooms/active");
+                const res = await fetch(`${process.env.REACT_APP_API_URL}/api/rooms/active`);
                 if (!res.ok) throw new Error(`HTTP error! Status: ${res.status}`);
                 const data = await res.json();
                 setRooms(data);
@@ -89,7 +89,7 @@ const RoomSelectionPage = () => {
             if (!userId) return;
 
             try {
-                const res = await fetch(`http://localhost:5001/api/favourites/${userId}`);
+                const res = await fetch(`${process.env.REACT_APP_API_URL}/api/favourites/${userId}`);
                 const data = await res.json();
                 const ids = data.map(topic => topic.id);
                 setFavouriteTopicIds(ids);
@@ -111,14 +111,14 @@ const RoomSelectionPage = () => {
 
         try {
             if (isFav) {
-                await fetch("http://localhost:5001/api/favourites", {
+                await fetch(`${process.env.REACT_APP_API_URL}/api/favourites`, {
                     method: "DELETE",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({ user_id: userId, topic_id: topicId }),
                 });
                 setFavouriteTopicIds(prev => prev.filter(id => id !== topicId));
             } else {
-                await fetch("http://localhost:5001/api/favourites", {
+                await fetch(`${process.env.REACT_APP_API_URL}/api/favourites`, {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({ user_id: userId, topic_id: topicId }),
@@ -141,7 +141,7 @@ const RoomSelectionPage = () => {
         }
 
         try {
-            await fetch("http://localhost:5001/api/rooms/join", {
+            await fetch(`${process.env.REACT_APP_API_URL}/api/rooms/join`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ room_id: roomId, user_id: userId }),
@@ -176,7 +176,7 @@ const RoomSelectionPage = () => {
         const roomId = crypto.randomUUID();
 
         try {
-            await fetch("http://localhost:5001/api/rooms/create", {
+            await fetch(`${process.env.REACT_APP_API_URL}/api/rooms/create`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
