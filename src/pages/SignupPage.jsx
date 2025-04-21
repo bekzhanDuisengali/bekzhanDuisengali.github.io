@@ -53,7 +53,7 @@ const SignupPage = () => {
 
             localStorage.setItem("userId", data.userId);
             localStorage.setItem("token", data.token);
-            navigate("/profile");
+            navigate("/myprofile");
         } catch (err) {
             setError(err.message);
         } finally {

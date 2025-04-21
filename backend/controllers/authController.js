@@ -25,7 +25,7 @@ exports.registerUser = async (req, res) => {
 
         res.status(201).json({
             message: 'Пользователь создан',
-            user: newUser.rows[0],
+            userId: newUser.rows[0].id,
             token
         });
     } catch (err) {

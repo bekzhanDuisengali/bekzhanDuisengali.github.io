@@ -2,12 +2,14 @@
   "name": "lexio",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://bekzhanDuisengali.github.io",
   "dependencies": {
     "bcrypt": "^5.1.1",
     "bcryptjs": "^3.0.2",
     "cra-template": "1.2.0",
     "dotenv": "^16.4.7",
     "express": "^5.1.0",
+    "gh-pages": "^6.3.0",
     "jsonwebtoken": "^9.0.2",
     "jwt-decode": "^4.0.0",
     "mongoose": "^8.13.2",
@@ -23,7 +25,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [

@@ -6,6 +6,8 @@ import exitIcon from "../assets/exitIcon.png";
 import avatar from "../assets/avatar.png";
 import sub from "../assets/sub.png";
 import mic from "../assets/mic.png";
+import micoff from "../assets/micoff.png";
+import {useNavigate} from "react-router-dom";
 const scenarios = [
     {
         level: "Beginner",
@@ -682,9 +684,51 @@ const RoomPage = () => {
     const { topic, language, level, roomId } = location.state || {};
     const [scenario, setScenario] = useState(null);
 
+    const [showAbout, setShowAbout] = useState(false);
+
+
+    const [isMicOn, setIsMicOn] = useState(true);
+    const [stream, setStream] = useState(null);
+
+    const navigate = useNavigate();
     useEffect(() => {
-        console.log("Level:", level);
-        console.log("Topic:", topic);
+        const getAudioStream = async () => {
+            try {
+                const audioStream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                setStream(audioStream);
+            } catch (err) {
+                console.error("Ошибка при доступе к микрофону:", err);
+            }
+        };
+
+        getAudioStream();
+
+        return () => {
+            if (stream) {
+                stream.getTracks().forEach((track) => track.stop());
+            }
+        };
+    }, []);
+
+    const toggleMic = () => {
+        if (stream) {
+            const audioTrack = stream.getTracks()[0];
+            audioTrack.enabled = !audioTrack.enabled;
+            setIsMicOn(audioTrack.enabled);
+        }
+    };
+    const handleExit = async () => {
+        try {
+            await fetch(`http://localhost:5001/api/rooms/close/${roomId}`, {
+                method: 'GET'
+            });
+        } catch (err) {
+            console.error('Не удалось выйти из комнаты:', err);
+        } finally {
+            navigate('/');
+        }
+    };
+    useEffect(() => {
         const fetchUsers = async () => {
             try {
                 const res = await fetch(`http://localhost:5001/api/rooms/room-users?roomId=${roomId}`);
@@ -705,15 +749,14 @@ const RoomPage = () => {
         }
     }, [level, topic]);
 
+
     const showRandomScenario = () => {
         const random = getRandomScenarioByLevelAndTopic(level, topic);
-        console.log("Random scenario returned:", random);
         setScenario(random);
     }
 
     function getRandomScenarioByLevelAndTopic(level, topic) {
         const levelData = scenarios.find((s) => s.level === level);
-
         if (!levelData || levelData.scenarios.length === 0) return null;
 
         const topicData = levelData.scenarios.filter((scenario) => {
@@ -737,15 +780,26 @@ const RoomPage = () => {
     return (
         <div className="room-container">
             <div className="rooms-header">
-                <button className="info-button">
+                <button className="info-button" onClick={() => setShowAbout(!showAbout)}>
                     <img src={aboutIcon} alt="About" />
                     <span>About</span>
                 </button>
 
+                {showAbout && (
+                    <div className="about-box">
+                        <p>
+                            Внизу находится карточка, по которой вы можете говорить и делиться своими мыслями. <br />
+                            Топик находится в верхнем углу. <br />
+                            Вы можете говорить, когда подойдёт ваша очередь. <br />
+                            В конце сессии вы сможете оценить других пользователей, а они — вас :)
+                        </p>
+                    </div>
+                )}
+
                 <h1 className="room-title">"{topic || 'Room Title'}"</h1>
 
-                <button className="exit-button">
-                    <img src={exitIcon} alt="Exit" />
+                <button className="exit-button" onClick={handleExit}>
+                    <img src={exitIcon} alt="Exit"/>
                     <span>Exit</span>
                 </button>
             </div>
@@ -763,8 +817,13 @@ const RoomPage = () => {
             </div>
 
             <div className="microphone-container">
-                <button className="microphone-button"><img src={mic} alt="Mic" /></button>
-                <button className="subtitles-button"><img src={sub} alt="Subtitles" /></button>
+                <button className="microphone-button" onClick={toggleMic}>
+                    <img src={isMicOn ? mic : micoff} alt="Mic" />
+                    {/*<span>{isMicOn ? "Mute" : "Unmute"}</span>*/}
+                </button>
+                <button className="subtitles-button">
+                    <img src={sub} alt="Subtitles" />
+                </button>
             </div>
 
             <div className="user-list">
@@ -787,6 +846,10 @@ const RoomPage = () => {
                     <p>{scenario.content}</p>
                 </div>
             )}
+            {/*<button className="exit-button" onClick={handleExit}>*/}
+            {/*    <img src={exitIcon} alt="Exit"/>*/}
+            {/*    <span>Exit</span>*/}
+            {/*</button>*/}
         </div>
     );
 };

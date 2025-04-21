@@ -22,5 +22,26 @@ router.post('/quiz-results', async (req, res) => {
         res.status(500).json({ error: 'Internal Server Error' });
     }
 });
+router.get('/quiz-results/:userId', async (req, res) => {
+    const { userId } = req.params;
+    try {
+        const { rows } = await pool.query(
+            `
+                SELECT DISTINCT ON (language)
+                    language,
+                    level
+                FROM quiz_results
+                WHERE user_id = $1
+                ORDER BY language, id DESC
+            `,
+            [userId]
+        );
+        res.json(rows);
+    } catch (err) {
+        console.error('Ошибка при чтении результатов тестов:', err);
+        res.status(500).json({ error: 'Ошибка сервера' });
+    }
+});
+
 
 module.exports = router;

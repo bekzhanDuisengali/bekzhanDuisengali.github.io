@@ -13,9 +13,18 @@ class TestPage extends Component {
                     </div>
                     <nav className="navbar-test">
                         <a href="/room" className="nav-link-test">Select Rooms</a>
-                        <a href="/login" className="nav-link-test">Log In</a>
-                        <button className="sign-up-test"><a href="/signup" className="signup">Sign Up</a></button>
+                        {localStorage.getItem("userId") ? (
+                            <a href="/myprofile" className="nav-link-test">Profile</a>
+                        ) : (
+                            <a href="/login" className="nav-link-test">Log In</a>
+                        )}
+                        {!localStorage.getItem("userId") && (
+                            <button className="sign-up-test">
+                                <a href="/signup" className="signup">Sign Up</a>
+                            </button>
+                        )}
                     </nav>
+
                 </header>
 
                 <main className="test-main">

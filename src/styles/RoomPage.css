@@ -152,3 +152,15 @@
     height: 80px;
     border-radius: 50%;
 }
+
+.about-box {
+    background-color: #f0f0f0;
+    color: #060606;
+    padding: 16px;
+    margin: 12px;
+    border-radius: 12px;
+    font-size: 16px;
+    line-height: 1.6;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+}
+

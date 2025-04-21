@@ -16,14 +16,15 @@
 .navbar-room {
     display: flex;
     justify-content: space-between;
-    gap: 1000px;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    padding: 0 20px;
+    margin-bottom: 20px;
 }
 
 .dot-icon {
     width: 60px;
-    position: absolute;
-    left: 63px;
-    top: 10px;
     cursor: pointer;
 }
 
@@ -91,6 +92,7 @@
 
 .filter-btn {
     display: flex;
+    position: relative;
     flex-direction: column;
     align-items: center;
     padding: 10px;
@@ -98,10 +100,21 @@
     border-radius: 15px;
     color: #fff;
     cursor: pointer;
+    min-height: 110px;
     transition: 0.3s;
     font-family: "Raleway", sans-serif;
 }
+.filter-btn:hover {
+    transform: scale(1.05);
+}
 
+.filter-heart {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    font-size: 18px;
+    z-index: 2;
+}
 .filter-btn.selected {
     box-sizing: border-box;
     background: #161B1C;
