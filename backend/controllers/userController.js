@@ -44,7 +44,6 @@ exports.updateProfile = async (req, res) => {
     if (!username && !email) {
         return res.status(400).json({error: 'Nothing to update'});
     }
-
     try {
         if (email) {
             const dup = await pool.query(
@@ -55,7 +54,6 @@ exports.updateProfile = async (req, res) => {
                 return res.status(400).json({ error: 'Email already in use' });
             }
         }
-
         const fields = [];
         const values = [];
         let idx = 1;
@@ -68,7 +66,6 @@ exports.updateProfile = async (req, res) => {
             values.push(email);
         }
         values.push(userId);
-
         const query = `
       UPDATE users
       SET ${fields.join(', ')}
