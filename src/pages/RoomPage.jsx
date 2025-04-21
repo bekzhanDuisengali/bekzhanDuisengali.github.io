@@ -719,20 +719,19 @@ const RoomPage = () => {
     };
     const handleExit = async () => {
         try {
-            await fetch(`${process.env.REACT_APP_API_URL}/api/rooms/close/${roomId}`, {
+            await fetch(`http://localhost:5001/api/rooms/close/${roomId}`, {
                 method: 'GET'
             });
         } catch (err) {
             console.error('Не удалось выйти из комнаты:', err);
         } finally {
-            navigate('/');
+            navigate('/room');
         }
     };
     useEffect(() => {
         const fetchUsers = async () => {
             try {
-                const res = await fetch(`${process.env.REACT_APP_API_URL}/api/rooms/room-users?roomId=${roomId}`);
-                if (!res.ok) {
+                const res = await fetch(`http://localhost:5001/api/rooms/room-users?roomId=${roomId}`);                if (!res.ok) {
                     throw new Error(`HTTP error! Status: ${res.status}`);
                 }
                 const data = await res.json();

@@ -37,7 +37,7 @@ const EditPage = () => {
         if (error) return setErrors({ name: error });
 
         try {
-            const res = await fetch(`${process.env.REACT_APP_API_URL}/api/users/${userId}`, {
+            const res = await fetch(`http://localhost:5001/api/users/${userId}`, {
                 method: "PUT",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ username: nameInput }),
@@ -75,7 +75,7 @@ const EditPage = () => {
         }
 
         try {
-            const res = await fetch(`${process.env.REACT_APP_API_URL}/api/users/${userId}`, {
+            const res = await fetch(`http://localhost:5001/api/users/${userId}`, {
                 method: "PUT",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ email: emailInput }),
@@ -115,7 +115,7 @@ const EditPage = () => {
         }
 
         try {
-            const res = await fetch(`${process.env.REACT_APP_API_URL}/api/users/${userId}/password`, {
+            const res = await fetch(`http://localhost:5001/api/users/${userId}/password`, {
                 method: "PUT",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({

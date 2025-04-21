@@ -21,15 +21,25 @@ import circle7Icon from "../assets/circle1.png"
 
 
 class Main extends Component {
+    isUserLoggedIn = () => {
+        return localStorage.getItem("token") !== null;
+    };
     render() {
         return (
             <div className="app-container">
                 <header className="header">
                     <img src={globeIcon} alt="Globe" className="nav-icon" />
                     <nav className="navbar-main">
-                        <a href="/room" className="nav-link-main">Select Rooms</a>
-                        <a href="/login" className="nav-link-main">Log In</a>
-                        <button className="sign-up-main"><a href="/signup" className="signup-link">Sign Up</a></button>
+                        {!this.isUserLoggedIn() ? (
+                            <>
+                                <a href="/login" className="nav-link-main">Log In</a>
+                                <button className="sign-up-main"><a href="/signup" className="signup-link">Sign Up</a></button>
+                            </>
+                        ) : (
+                            <>
+                            <a href="/myprofile" className="nav-link-main">Profile</a>
+                            </>
+                            )}
                     </nav>
                 </header>
 

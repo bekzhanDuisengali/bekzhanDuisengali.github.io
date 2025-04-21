@@ -20,7 +20,7 @@ const MyProfile = () => {
             return;
         }
 
-        fetch(`${process.env.REACT_APP_API_URL}/api/users/${userId}`)
+        fetch(`http://localhost:5001/api/users/${userId}`)
             .then(res => res.json())
             .then(data => {
                 setUserName(data.username || "User");
@@ -28,11 +28,11 @@ const MyProfile = () => {
             })
             .catch(err => console.error("Ошибка при получении профиля:", err));
 
-        fetch(`${process.env.REACT_APP_API_URL}/api/quiz-results/${userId}`)
+        fetch(`http://localhost:5001/api/quiz-results/${userId}`)
             .then(res => res.json())
             .then(data => setLanguages(data))
             .catch(err => console.error("Ошибка при получении языков:", err));
-        fetch(`${process.env.REACT_APP_API_URL}/api/favourites/${userId}`)
+        fetch(`http://localhost:5001/api/favourites/${userId}`)
             .then(res => res.json())
             .then(data => setFavouriteTopics(data.map(t => t.name)))
             .catch(err => console.error("Ошибка при получении избранных тем:", err));
