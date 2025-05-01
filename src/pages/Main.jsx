@@ -24,6 +24,11 @@ class Main extends Component {
     isUserLoggedIn = () => {
         return localStorage.getItem("token") !== null;
     };
+    handleLogout = () => {
+        localStorage.removeItem("token");
+        window.location.href = "/";
+    };
+
     render() {
         return (
             <div className="app-container">
@@ -33,14 +38,20 @@ class Main extends Component {
                         {!this.isUserLoggedIn() ? (
                             <>
                                 <a href="/login" className="nav-link-main">Log In</a>
-                                <button className="sign-up-main"><a href="/signup" className="signup-link">Sign Up</a></button>
+                                <button className="sign-up-main">
+                                    <a href="/signup" className="signup-link">Sign Up</a>
+                                </button>
                             </>
                         ) : (
                             <>
-                            <a href="/myprofile" className="nav-link-main">Profile</a>
+                                <a href="/myprofile" className="nav-link-main">Profile</a>
+                                <button className="sign-up-main" onClick={this.handleLogout}>
+                                    Log Out
+                                </button>
                             </>
-                            )}
+                        )}
                     </nav>
+
                 </header>
 
                 <main className="main-content">

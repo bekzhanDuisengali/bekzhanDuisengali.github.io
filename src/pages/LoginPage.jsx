@@ -28,7 +28,7 @@ const LoginPage = () => {
             localStorage.setItem("userId", data.userId);
             localStorage.setItem("token", data.token);
 
-            navigate("/test");
+            navigate("/");
         } catch (err) {
             setError(err.message);
         }
@@ -37,9 +37,12 @@ const LoginPage = () => {
     return (
         <div className="login-page">
             <header className="navbar-login">
-                <div className="navbar-left">
-                    <img src={globeYellowIcon} alt="Globe Icon" className="globe-icon-login" />
-                </div>
+                <a href="/">
+                    <div className="navbar-left">
+                        <img src={globeYellowIcon} alt="Globe Icon" className="globe-icon-login" />
+                    </div>
+                </a>
+
                 <nav className="navbar-link-login">
                     <a href="/room" className="nav-link-login">Select Rooms</a>
                     <a href="/login" className="nav-link-login">Log In</a>

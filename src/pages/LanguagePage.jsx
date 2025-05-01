@@ -4,8 +4,8 @@ import "../styles/LanguagePage.css";
 
 class LanguagePage extends Component {
     state = {
-        selectedLanguage: null, // Holds the selected language
-        showError: false, // To show the error notification
+        selectedLanguage: null,
+        showError: false,
     };
 
     handleLanguageSelect = (language) => {

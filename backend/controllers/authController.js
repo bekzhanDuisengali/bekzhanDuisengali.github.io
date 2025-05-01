@@ -26,7 +26,12 @@ exports.registerUser = async (req, res) => {
         res.status(201).json({
             message: 'Пользователь создан',
             userId: newUser.rows[0].id,
-            token
+            token,
+            user: {
+                id: newUser.rows[0].id,
+                username: newUser.rows[0].username,
+                email: newUser.rows[0].email
+            }
         });
     } catch (err) {
         console.error('Ошибка при регистрации:', err);
@@ -44,7 +49,16 @@ exports.loginUser = async (req, res) => {
         if (!isMatch) return res.status(400).json({ error: 'Пароль неверный' });
 
         const token = jwt.sign({ userId: user.rows[0].id }, process.env.JWT_SECRET, { expiresIn: '1h' });
-        res.json({ token });
+        res.json({
+            token,
+            userId: user.id,
+            user: {
+                id: user.id,
+                username: user.username,
+                email: user.email,
+            }
+        });
+
     } catch (err) {
         console.error('Ошибка при входе:', err);
         res.status(500).json({ error: 'Ошибка входа' });

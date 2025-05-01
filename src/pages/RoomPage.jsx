@@ -8,6 +8,10 @@ import sub from "../assets/sub.png";
 import mic from "../assets/mic.png";
 import micoff from "../assets/micoff.png";
 import {useNavigate} from "react-router-dom";
+import { io } from 'socket.io-client';
+
+const socket = io("http://localhost:5001");
+
 const scenarios = [
     {
         level: "Beginner",
@@ -685,12 +689,22 @@ const RoomPage = () => {
     const [scenario, setScenario] = useState(null);
 
     const [showAbout, setShowAbout] = useState(false);
-
+    const [isReady, setIsReady] = useState(false);
+    const [readyUsers, setReadyUsers] = useState([]);
 
     const [isMicOn, setIsMicOn] = useState(true);
     const [stream, setStream] = useState(null);
 
     const navigate = useNavigate();
+
+    const [countdown, setCountdown] = useState(null);
+    const [currentSpeaker, setCurrentSpeaker] = useState(null);
+
+
+    const user = JSON.parse(localStorage.getItem("user"));
+    const yourUserId = user?.id;
+    const yourUsername = user?.username;
+
     useEffect(() => {
         const getAudioStream = async () => {
             try {
@@ -705,9 +719,14 @@ const RoomPage = () => {
 
         return () => {
             if (stream) {
-                stream.getTracks().forEach((track) => track.stop());
+                stream.getTracks().forEach((track) => {
+                    if (track.readyState === 'live') {
+                        track.stop();
+                    }
+                });
             }
         };
+
     }, []);
 
     const toggleMic = () => {
@@ -717,10 +736,50 @@ const RoomPage = () => {
             setIsMicOn(audioTrack.enabled);
         }
     };
+
+    const handleReady = () => {
+        socket.emit('ready', { roomId, user: { id: yourUserId, username: yourUsername } });
+        setIsReady(true);
+    };
+
+    useEffect(() => {
+        if (user && roomId) {
+            socket.emit('joinRoom', { roomId, user });
+        } else {
+            console.warn("User или RoomId отсутствуют:", user, roomId);
+        }
+    }, [roomId]);
+
+    useEffect(() => {
+        socket.emit('joinRoom', { roomId, user });
+
+        socket.on('gameStarting', ({ scenario }) => {
+            console.log('Сценарий:', scenario);
+            setScenario(scenario);
+        });
+
+        socket.on('countdown', ({ countdown }) => {
+            setCountdown(countdown);
+        });
+
+        socket.on('startTurn', ({ user }) => {
+            setCurrentSpeaker(user);
+            setCountdown(null);
+        });
+
+        return () => {
+            socket.disconnect();
+        };
+    }, [roomId]);
+
+
+
+
+
     const handleExit = async () => {
         try {
             await fetch(`http://localhost:5001/api/rooms/close/${roomId}`, {
-                method: 'GET'
+                method: 'GET',
             });
         } catch (err) {
             console.error('Не удалось выйти из комнаты:', err);
@@ -728,10 +787,13 @@ const RoomPage = () => {
             navigate('/room');
         }
     };
+
     useEffect(() => {
         const fetchUsers = async () => {
+            if (!roomId) return;
             try {
-                const res = await fetch(`http://localhost:5001/api/rooms/room-users?roomId=${roomId}`);                if (!res.ok) {
+                const res = await fetch(`http://localhost:5001/api/rooms/room-users?roomId=${roomId}`);
+                if (!res.ok) {
                     throw new Error(`HTTP error! Status: ${res.status}`);
                 }
                 const data = await res.json();
@@ -742,31 +804,27 @@ const RoomPage = () => {
         };
 
         fetchUsers();
-        if (level && topic) {
-            const random = getRandomScenarioByLevelAndTopic(level, topic);
-            setScenario(random);
-        }
-    }, [level, topic]);
 
+    }, [roomId, level, topic]);
 
     const showRandomScenario = () => {
         const random = getRandomScenarioByLevelAndTopic(level, topic);
         setScenario(random);
-    }
+    };
 
     function getRandomScenarioByLevelAndTopic(level, topic) {
         const levelData = scenarios.find((s) => s.level === level);
         if (!levelData || levelData.scenarios.length === 0) return null;
 
-        const topicData = levelData.scenarios.filter((scenario) => {
-            const scenarioTopic = scenario.topic?.toLowerCase().trim();
-            const currentTopic = topic?.toLowerCase().trim();
-            return scenarioTopic === currentTopic;
-        });
+
+
+        const topicData = levelData.scenarios.filter((scenario) =>
+            scenario.topic?.toLowerCase().trim() === topic?.toLowerCase().trim()
+        );
 
         if (topicData.length === 0) return null;
 
-        const randomScenario = levelData.scenarios[Math.floor(Math.random() * levelData.scenarios.length)];
+        const randomScenario = topicData[Math.floor(Math.random() * topicData.length)];
         const randomContent = randomScenario.content[Math.floor(Math.random() * randomScenario.content.length)];
 
         return {
@@ -776,6 +834,7 @@ const RoomPage = () => {
             content: randomContent,
         };
     }
+
     return (
         <div className="room-container">
             <div className="rooms-header">
@@ -818,7 +877,6 @@ const RoomPage = () => {
             <div className="microphone-container">
                 <button className="microphone-button" onClick={toggleMic}>
                     <img src={isMicOn ? mic : micoff} alt="Mic" />
-                    {/*<span>{isMicOn ? "Mute" : "Unmute"}</span>*/}
                 </button>
                 <button className="subtitles-button">
                     <img src={sub} alt="Subtitles" />
@@ -837,6 +895,28 @@ const RoomPage = () => {
                     <p>No users in the room</p>
                 )}
             </div>
+
+            <div className="ready-button-container">
+                {!isReady ? (
+                    <button className="ready-button" onClick={handleReady}>
+                        Я готов
+                    </button>
+                ) : (
+                    <p>Ожидание других игроков...</p>
+                )}
+            </div>
+            {countdown !== null && (
+                <div className="countdown">
+                    <h2>Начинаем через: {countdown}...</h2>
+                </div>
+            )}
+
+            {currentSpeaker && (
+                <div className="speaker-announcement">
+                    <h2>🎙 Сейчас говорит: {currentSpeaker.username}</h2>
+                </div>
+            )}
+
             <button onClick={showRandomScenario}>Show Scenario</button>
 
             {scenario && (
@@ -845,12 +925,8 @@ const RoomPage = () => {
                     <p>{scenario.content}</p>
                 </div>
             )}
-            {/*<button className="exit-button" onClick={handleExit}>*/}
-            {/*    <img src={exitIcon} alt="Exit"/>*/}
-            {/*    <span>Exit</span>*/}
-            {/*</button>*/}
         </div>
     );
-};
+}
 
 export default RoomPage;

@@ -8,7 +8,7 @@ import achievement3 from "../assets/achievement3.jpg";
 
 const MyProfile = () => {
     const [userName, setUserName] = useState("User");
-    const [avatarUrl] = useState(defaultAvatar); // пока статично
+    const [avatarUrl] = useState(defaultAvatar);
     const [rating, setRating] = useState(0.0);
     const [languages, setLanguages] = useState([]);
     const [favouriteTopics, setFavouriteTopics] = useState([]);

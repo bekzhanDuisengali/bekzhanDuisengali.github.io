@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {Link, useNavigate} from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../styles/RoomSelectionPage.css";
 import travelIcon from "../assets/travel.png";
 import dailyLifeIcon from "../assets/daily-life.png";
@@ -27,29 +27,22 @@ const getUserIdFromToken = () => {
     }
 };
 
-
 const RoomSelectionPage = () => {
     const [selectedFilter, setSelectedFilter] = useState(null);
     const [topicFilters, setTopicFilters] = useState([]);
     const [selectedLanguage, setSelectedLanguage] = useState("");
     const [selectedLevel, setSelectedLevel] = useState("");
-
     const [favouriteTopicIds, setFavouriteTopicIds] = useState([]);
-
-
     const [selectedCapacity, setSelectedCapacity] = useState("");
     const [userId, setUserId] = useState(null);
-
     const [rooms, setRooms] = useState([]);
     const [selectedTopicId, setSelectedTopicId] = useState("");
-
     const navigate = useNavigate();
 
     const handleLanguageChange = (e) => setSelectedLanguage(e.target.value);
     const handleLevelChange = (e) => setSelectedLevel(e.target.value);
     const handleTopicChange = (e) => setSelectedTopicId(e.target.value);
     const handleCapacityChange = (e) => setSelectedCapacity(e.target.value);
-
 
     useEffect(() => {
         const id = getUserIdFromToken();
@@ -58,14 +51,22 @@ const RoomSelectionPage = () => {
 
     useEffect(() => {
         fetch("http://localhost:5001/api/topics")
-            .then(res => res.json())
-            .then(setTopicFilters)
+            .then(res => {
+                if (!res.ok) throw new Error(`Status ${res.status}`);
+                return res.json();
+            })
+            .then(data => {
+                console.log("Topics loaded:", data);
+                setTopicFilters(data);
+            })
             .catch(err => console.error("Ошибка загрузки тем:", err));
     }, []);
+
 
     const handleFilterSelect = (filter) => {
         setSelectedFilter(prev => (prev === filter ? null : filter));
     };
+
     useEffect(() => {
         const fetchActiveRooms = async () => {
             try {
@@ -130,8 +131,6 @@ const RoomSelectionPage = () => {
         }
     };
 
-
-
     const handleJoinRoom = async (roomId, topic, language, level) => {
         const userId = getUserIdFromToken();
 
@@ -148,13 +147,7 @@ const RoomSelectionPage = () => {
             });
 
             navigate("/roompage", {
-                state: {
-                    roomId,
-                    topic,
-                    language,
-                    level,
-
-                },
+                state: { roomId, topic, language, level },
             });
         } catch (error) {
             console.error("Ошибка при присоединении к комнате:", error);
@@ -162,16 +155,17 @@ const RoomSelectionPage = () => {
     };
 
     const handleCreateRoom = async () => {
+        const topicIdToUse = selectedTopicId;
         const language = selectedLanguage;
         const level = selectedLevel;
         const userId = getUserIdFromToken();
-        console.log("User ID:", userId);
-        if (!selectedTopicId || language === "" || level === "" || !selectedCapacity || !userId) {
+
+        if (!topicIdToUse || language === "" || level === "" || !selectedCapacity || !userId) {
             alert("Please select all fields before creating a room.");
             return;
         }
 
-        const topicName = topicFilters.find(t => t.id.toString() === selectedTopicId)?.name || "Unknown Topic";
+        const topicName = topicFilters.find(t => t.id.toString() === topicIdToUse.toString())?.name || "Unknown Topic";
         const roomName = `Room ${topicName} (${language})`;
         const roomId = crypto.randomUUID();
 
@@ -180,7 +174,7 @@ const RoomSelectionPage = () => {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
-                    topic_id: selectedTopicId,
+                    topic_id: topicIdToUse,
                     name: roomName,
                     room_id: roomId,
                     language: selectedLanguage,
@@ -191,21 +185,18 @@ const RoomSelectionPage = () => {
             });
 
             navigate("/roompage", {
-                state: {
-                    topic: topicName,
-                    language: selectedLanguage,
-                    level: selectedLevel,
-                    roomId
-                }
+                state: { topic: topicName, language: selectedLanguage, level: selectedLevel, roomId }
             });
         } catch (err) {
             console.error("Ошибка при создании комнаты:", err.message);
         }
     };
+
     const getTopicUUIDByName = (name) => {
         const topic = topicFilters.find((t) => t.name === name);
         return topic?.id;
     };
+
     const filters = [
         { id: 1, name: "Travel Adventures", icon: travelIcon },
         { id: 2, name: "Daily Life", icon: dailyLifeIcon },
@@ -219,22 +210,18 @@ const RoomSelectionPage = () => {
         { id: 10, name: "Business & Career", icon: businessIcon },
     ];
 
-    const filteredRooms = selectedFilter
-        ? rooms.filter((room) => room.topic === selectedFilter)
-        : rooms;
+    const filteredRooms = selectedFilter ? rooms.filter((room) => room.topic === selectedFilter) : rooms;
 
     return (
         <div className="room-selection-page">
             <header className="room-header">
                 <nav className="navbar-room">
-                    <nav className="navbar-room">
-                        <a href="/">
-                            <img src={globeIcon} alt="dot" className="dot-icon" />
-                        </a>
-                        <a href="/myprofile">
-                            <button className="logout-room">Profile</button>
-                        </a>
-                    </nav>
+                    <a href="/">
+                        <img src={globeIcon} alt="dot" className="dot-icon" />
+                    </a>
+                    <a href="/myprofile">
+                        <button className="logout-room">Profile</button>
+                    </a>
                 </nav>
                 <h1>Select a Room to Join</h1>
                 <p>Choose a topic for conversation</p>
@@ -245,13 +232,27 @@ const RoomSelectionPage = () => {
                     <h2>Don't see a room that fits?</h2>
                     <p>Create your own!</p>
                     <div className="room-create-form">
-                        <select className="dropdown" onChange={handleTopicChange}>
-                            <option value="">Topic</option>
-                            {topicFilters.map((topic) => (
-                                <option key={topic.id} value={topic.id}>{topic.name}</option>
-                            ))}
-                        </select>
+                        <div className="topic-select-random">
+                            <button
+                                className="dropdown"
+                                style={{ marginBottom: '10px' }}
+                                onClick={() => {
+                                    if (topicFilters.length > 0) {
+                                        const random = topicFilters[Math.floor(Math.random() * topicFilters.length)];
+                                        setSelectedTopicId(random.id.toString());
+                                    }
+                                }}
+                            >
+                                Random Topic
+                            </button>
+                            <select className="dropdown" onChange={handleTopicChange} value={selectedTopicId}>
+                                <option value="">Select Topic</option>
+                                {topicFilters.map((topic) => (
+                                    <option key={topic.id} value={topic.id}>{topic.name}</option>
+                                ))}
+                            </select>
 
+                        </div>
 
                         <select className="dropdown" value={selectedLanguage} onChange={handleLanguageChange}>
                             <option value="">Language</option>
@@ -262,8 +263,10 @@ const RoomSelectionPage = () => {
 
                         <select className="dropdown" value={selectedLevel} onChange={handleLevelChange}>
                             <option value="">Level</option>
-                            <option value="Beginner">Beginner</option>
+                            <option value="Elementary">Elementary</option>
+                            <option value="Pre-Intermediate">Pre-Intermediate</option>
                             <option value="Intermediate">Intermediate</option>
+                            <option value="Upper-Intermediate">Upper-Intermediate</option>
                             <option value="Advanced">Advanced</option>
                         </select>
 
@@ -298,7 +301,6 @@ const RoomSelectionPage = () => {
                                     <span className="room-users">
                                         {room.current_users} / {room.capacity} users
                                     </span>
-
                                 </li>
                             ))
                         ) : (
@@ -318,24 +320,22 @@ const RoomSelectionPage = () => {
                                 >
                                     <img src={filter.icon} alt={filter.name} className="filter-icon" />
                                     <span className="filter-name">{filter.name}</span>
-
                                     <span
                                         className="filter-heart"
                                         onClick={(e) => {
-                                            e.stopPropagation(); // предотвращает клик на фильтр
+                                            e.stopPropagation();
                                             const topicUUID = getTopicUUIDByName(filter.name);
                                             if (topicUUID) toggleFavourite(topicUUID);
                                         }}
                                     >
-                    {favouriteTopicIds.includes(getTopicUUIDByName(filter.name))
-                        ? <FaHeart color="red" />
-                        : <FaRegHeart />}
-                </span>
+                                        {favouriteTopicIds.includes(getTopicUUIDByName(filter.name))
+                                            ? <FaHeart color="red" />
+                                            : <FaRegHeart />}
+                                    </span>
                                 </button>
                             </div>
                         ))}
                     </div>
-
                 </div>
             </div>
         </div>

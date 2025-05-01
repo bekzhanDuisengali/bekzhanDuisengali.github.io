@@ -9,7 +9,10 @@ class TestPage extends Component {
             <div className="test-page">
                 <header className="test-header">
                     <div className="logo">
-                        <img src={globeYellowIcon} alt="Globe" className="nav-icon"/>
+                        <a href="/">
+                            <img src={globeYellowIcon} alt="Globe" className="nav-icon"/>
+                        </a>
+
                     </div>
                     <nav className="navbar-test">
                         <a href="/room" className="nav-link-test">Select Rooms</a>
