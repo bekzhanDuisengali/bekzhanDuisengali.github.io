@@ -73,9 +73,32 @@
     text-align: left;
 }
 
-.avatar-section {
-    text-align: start;
-    background-color: #00078C;
+.avatar-section-mine {
+    background-color: #0044cc;
+    width: 220px;
+    height: 250px;
+    border-radius: 30px;
+}.friends-section,
+ .friend-requests-section {
+     margin-top: 24px;
+     padding: 16px 20px;
+     background-color: #000000;
+     border-radius: 16px;
+     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+     transition: all 0.3s ease;
+ }
+
+.friends-section:hover,
+.friend-requests-section:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.friends-section h3,
+.friend-requests-section h3 {
+    margin-bottom: 12px;
+    font-size: 18px;
+    color: #333333;
+    font-weight: 600;
 }
 
 .avatar {
@@ -126,7 +149,7 @@
 }
 
 .favorite-topics {
-    margin-top: 80px;
+    margin-top: 150px;
 }
 
 .favorite-topics h3 {
@@ -187,4 +210,26 @@
 
 .join-room:hover {
     color: #FAD02C;
+}
+.rating-chart-container {
+    margin-top: 40px;
+    padding: 20px 30px;
+    background: #2A2A2A;
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(255, 255, 0, 0.2);
+    color: white;
+    text-align: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.rating-chart-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(255, 255, 0, 0.4);
+}
+
+.rating-chart-container h3 {
+    font-size: 26px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #FFFF00;
 }

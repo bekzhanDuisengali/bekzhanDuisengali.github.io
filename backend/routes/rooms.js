@@ -1,43 +1,47 @@
 const express = require('express');
 const router = express.Router();
 const pool = require('../db');
-
-const { createRoom, getRoomUsers, getActiveRooms, closeRoom, joinRoom } = require('../controllers/roomController');
-
+const authMiddleware = require('../middleware/authMiddleware');
+const {
+    createRoom,
+    getRoomUsers,
+    getActiveRooms,
+    joinRoom,
+    closeRoomCompletely,
+    getReadyUsers,
+    setUserReady,
+    createRating,
+    hasUserRated,
+    leaveRoom
+} = require('../controllers/roomController');
+// Создание комнаты
 router.post('/create', createRoom);
-router.post('/ready', async (req, res) => {
-    const { roomId } = req.body;
-    const userId = req.user.id;
 
-    try {
-        await pool.query(
-            'UPDATE room_users SET is_ready = true WHERE room_id = $1 AND user_id = $2',
-            [roomId, userId]
-        );
-        res.sendStatus(200);
-    } catch (err) {
-        console.error(err);
-        res.sendStatus(500);
-    }
-});
-router.get('/ready-users', async (req, res) => {
-    const { roomId } = req.query;
+// Присоединение к комнате
+router.post('/joinRoom', joinRoom);
 
-    try {
-        const result = await pool.query(
-            'SELECT user_id FROM room_users WHERE room_id = $1 AND is_ready = true',
-            [roomId]
-        );
-        res.json(result.rows.map(r => r.user_id));
-    } catch (err) {
-        console.error(err);
-        res.sendStatus(500);
-    }
-});
-
+// Получение пользователей комнаты
 router.get('/room-users', getRoomUsers);
 
+// Обновление флага is_ready
+router.post('/ready',setUserReady);
+
+// Получение пользователей с is_ready = true
+router.get('/ready-users', getReadyUsers);
+
+// Новый маршрут выхода из комнаты
+router.post('/leave', leaveRoom);
+
+// Получение активных комнат
 router.get('/active', getActiveRooms);
-router.get('/close/:id', closeRoom);
-router.get('/joinRoom', joinRoom);
+
+
+// Полное закрытие комнаты
+router.get('/close-completely/:id', closeRoomCompletely);
+
+router.post('/rate', createRating);
+
+router.get('/has-rated', hasUserRated);
+
+
 module.exports = router;

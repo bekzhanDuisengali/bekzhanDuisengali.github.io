@@ -41,7 +41,7 @@ class App extends Component {
                     <Route path="/login" element={<LoginPage />} />
                     <Route path="/signup" element={<SignupPage />} />
                     <Route path="/roompage" element={<RoomPage />} />
-                    <Route path="/profile" element={<ProfilePage />} />
+                    <Route path="/profile/:id" element={<ProfilePage />} />
                     <Route path="/myprofile" element={<MyProfile />} />
                     <Route path="/edit" element={<EditPage />} />
                 </Routes>

@@ -115,3 +115,36 @@ exports.changePassword = async (req, res) => {
         res.status(500).json({ error: 'Server error' });
     }
 };
+
+exports.getAverageRating = async (req, res) => {
+    const userId = req.params.userId;
+
+    try {
+        const result = await pool.query(
+            `SELECT AVG(rating) AS "averageRating" FROM user_ratings WHERE to_user_id = $1`,
+            [userId]
+        );
+
+        const avg = result.rows[0].averageRating; // с заглавной буквы!
+        res.json({ averageRating: avg !== null ? parseFloat(avg).toFixed(1) : 0 });
+    } catch (error) {
+        console.error("Error getting average rating:", error);
+        res.status(500).json({ error: "Server error" });
+    }
+};
+
+exports.getUserRatingHistory = async (req, res) => {
+    try {
+        const userId = req.params.userId;
+
+        const result = await pool.query(
+            'SELECT * FROM user_ratings WHERE to_user_id = $1 ORDER BY created_at ASC',
+            [userId]
+        );
+
+        res.json(result.rows);
+    } catch (error) {
+        console.error('Ошибка при получении истории рейтинга:', error);
+        res.status(500).json({ message: 'Ошибка сервера при получении истории рейтинга.' });
+    }
+};

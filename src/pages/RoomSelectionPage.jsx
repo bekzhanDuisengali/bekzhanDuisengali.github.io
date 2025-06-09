@@ -62,8 +62,9 @@ const RoomSelectionPage = () => {
             .catch(err => console.error("Ошибка загрузки тем:", err));
     }, []);
 
-
+    console.log("Rooms:", rooms);
     const handleFilterSelect = (filter) => {
+        console.log("Filter selected:", filter);
         setSelectedFilter(prev => (prev === filter ? null : filter));
     };
 
@@ -132,17 +133,21 @@ const RoomSelectionPage = () => {
     };
 
     const handleJoinRoom = async (roomId, topic, language, level) => {
+        const token = localStorage.getItem("token");
         const userId = getUserIdFromToken();
 
-        if (!userId) {
+        if (!userId || !token) {
             alert("You must be logged in to join a room.");
             return;
         }
 
         try {
-            await fetch("http://localhost:5001/api/rooms/join", {
+            await fetch("http://localhost:5001/api/rooms/joinRoom", {
                 method: "POST",
-                headers: { "Content-Type": "application/json" },
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
+                },
                 body: JSON.stringify({ room_id: roomId, user_id: userId }),
             });
 
@@ -209,9 +214,13 @@ const RoomSelectionPage = () => {
         { id: 9, name: "Language Learning", icon: languageIcon },
         { id: 10, name: "Business & Career", icon: businessIcon },
     ];
-
-    const filteredRooms = selectedFilter ? rooms.filter((room) => room.topic === selectedFilter) : rooms;
-
+    console.log("selectedFilter:", selectedFilter);
+    console.log("rooms:", rooms);
+    const filteredRooms = selectedFilter
+        ? rooms.filter((room) =>
+            room.name.toLowerCase().includes(selectedFilter.name.toLowerCase())
+        )
+        : rooms;
     return (
         <div className="room-selection-page">
             <header className="room-header">
@@ -315,8 +324,8 @@ const RoomSelectionPage = () => {
                         {filters.map((filter) => (
                             <div key={filter.id} className="filter-wrapper">
                                 <button
-                                    className={`filter-btn ${selectedFilter === filter.name ? "selected" : ""}`}
-                                    onClick={() => handleFilterSelect(filter.name)}
+                                    className={`filter-btn ${selectedFilter === filter.id ? "selected" : ""}`}
+                                    onClick={() => handleFilterSelect(filter)}
                                 >
                                     <img src={filter.icon} alt={filter.name} className="filter-icon" />
                                     <span className="filter-name">{filter.name}</span>
@@ -328,10 +337,10 @@ const RoomSelectionPage = () => {
                                             if (topicUUID) toggleFavourite(topicUUID);
                                         }}
                                     >
-                                        {favouriteTopicIds.includes(getTopicUUIDByName(filter.name))
-                                            ? <FaHeart color="red" />
-                                            : <FaRegHeart />}
-                                    </span>
+                {favouriteTopicIds.includes(getTopicUUIDByName(filter.name))
+                    ? <FaHeart color="red" />
+                    : <FaRegHeart />}
+            </span>
                                 </button>
                             </div>
                         ))}
