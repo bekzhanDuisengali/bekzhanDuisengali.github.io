@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import "../styles/Main.css";
 import globeIcon from "../assets/globe.png";
 import manIcon from "../assets/man.png";
-import leafIcon from "../assets/leaf.png";
 import earthIcon from "../assets/earth.png";
 import languageIcon from "../assets/lang.png";
 import dec1Icon from "../assets/dec1.png"
@@ -17,8 +16,7 @@ import circle4Icon from "../assets/circle1.png"
 import circle5Icon from "../assets/circle1.png"
 import circle6Icon from "../assets/circle1.png"
 import circle7Icon from "../assets/circle1.png"
-
-
+import grassIcon from "../assets/grass.png"
 
 class Main extends Component {
     isUserLoggedIn = () => {
@@ -31,7 +29,7 @@ class Main extends Component {
 
     render() {
         return (
-            <div className="app-container">
+            <div className="app-container" >
                 <header className="header">
                     <img src={globeIcon} alt="Globe" className="nav-icon" />
                     <nav className="navbar-main">
@@ -58,22 +56,11 @@ class Main extends Component {
                     <div className="content-sections">
                         <img src={dec1Icon} alt="dec1" className="dec1"/>
                         <img src={circle7Icon} className="circle7-icon"/>
-                        <div className="title-section">
-                            <img src={languageIcon} alt="Language" className="language-icon"/>
-                            <h1 className="title">
-                                Lexi<span className="title-highlight">o</span>
-                            </h1>
-                            <img src={dec2Icon} alt="dec2" className="dec2"/>
-                            <div className="subtitle">
-                                <p className="subtitle-1">Practice languages</p>
-                                <p className="subtitle-2">with people around the world</p>
-                            </div>
-                        </div>
-
-                        <img src={dec3Icon} alt="dec3" className="dec3"/>
                         <div className="container">
                             <div className="how-it-works-container">
-                                <img src={leafIcon} alt="Leaf" className="leaf-icon"/>
+                                <div className="grass">
+                                    <img src={grassIcon} alt="grass" className="grass-icon"/>
+                                </div>
                                 <div className="how-it-works-content">
                                     <h2 className="sec-title">How It Works</h2>
                                     <p className="description">
@@ -88,15 +75,32 @@ class Main extends Component {
                             </div>
 
                             <div className="cta-buttons">
-                                <Link to="/signup" className="signup-link">
-                                    <button className="sign-up-button">Sign Up!</button>
-                                </Link>
-                                <Link to="/test" className="test-button-link">
-                                    <button className="test-button">Take Test</button>
-                                </Link>
+                                <div className="cont">
+                                    <div className="title-section">
+                                        {/*<img src={languageIcon} alt="Language" className="language-icon"/>*/}
+                                        <h1 className="title">
+                                            Lexi <span className="title-highlight">o</span>
+                                        </h1>
+                                        <img src={dec2Icon} alt="dec2" className="dec2"/>
+                                    </div>
+                                    <img src={dec3Icon} alt="dec3" className="dec3"/>
+                                    <div className="subtitle">
+                                        <p className="subtitle-1">Practice languages</p>
+                                        <p className="subtitle-2">with people around the world</p>
+                                    </div>
+                                    <div className="button-wrapper">
+                                        <Link to="/signup" className="signup-link">
+                                            <button className="sign-up-button">Sign Up!</button>
+                                        </Link>
+                                        <Link to="/test" className="test-button-link">
+                                            <button className="test-button">Take Test</button>
+                                        </Link>
+                                    </div>
+                                </div>
                             </div>
 
                             <div className="content">
+                                <img src={languageIcon} alt="Language" className="language-icon"/>
                                 <img src={circle1Icon} alt="circle" className="circle1-icon"/>
                                 <img src={circle2Icon} alt="circle" className="circle2-icon"/>
                                 <img src={circle3Icon} alt="circle" className="circle3-icon"/>
@@ -118,7 +122,7 @@ class Main extends Component {
                                         <p>Pleasant atmosphere and interesting topics for discussion.</p>
                                     </div>
                                 </div>
-
+                                <div className="striped-background2"></div>
                             </div>
 
                         </div>
