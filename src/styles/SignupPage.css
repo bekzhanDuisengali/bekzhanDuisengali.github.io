@@ -37,6 +37,10 @@ html {
     height: 40px;
 }
 
+.globe-icon-login:hover {
+    transform: scale(1.1);
+}
+
 .navbar-links-signup {
     display: flex;
     gap: 40px;

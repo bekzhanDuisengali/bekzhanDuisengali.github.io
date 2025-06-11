@@ -156,7 +156,7 @@ const EditPage = () => {
                             <input type="password" placeholder="Confirm the password" value={passwordInput} onChange={(e) => setPasswordInput(e.target.value)} className={errors.password ? "error" : ""} />
                             {errors.password && <p className="error-text">{errors.password}</p>}
                             <div className="button-group">
-                                <button onClick={handleSaveEmail}>Save</button>
+                                <button className="save-btn" onClick={handleSaveEmail}>Save</button>
                                 <button className="cancel-btn" onClick={handleCancel}>Cancel</button>
                             </div>
                         </div>
@@ -171,7 +171,7 @@ const EditPage = () => {
                             <input type="text" placeholder="Name" value={nameInput} onChange={(e) => setNameInput(e.target.value)} className={errors.name ? "error" : ""} />
                             {errors.name && <p className="error-text">{errors.name}</p>}
                             <div className="button-group">
-                                <button onClick={handleSaveName}>Save</button>
+                                <button className="save-btn" onClick={handleSaveName}>Save</button>
                                 <button className="cancel-btn" onClick={handleCancel}>Cancel</button>
                             </div>
                         </div>
@@ -193,7 +193,7 @@ const EditPage = () => {
                             <input type="password" placeholder="Confirm the new password" value={confirmPasswordInput} onChange={(e) => setConfirmPasswordInput(e.target.value)} className={errors.confirmPassword ? "error" : ""} />
                             {errors.confirmPassword && <p className="error-text">{errors.confirmPassword}</p>}
                             <div className="button-group">
-                                <button onClick={handleChangePassword}>Save</button>
+                                <button className="save-btn" onClick={handleChangePassword}>Save</button>
                                 <button className="cancel-btn" onClick={handleCancel}>Cancel</button>
                             </div>
                         </div>

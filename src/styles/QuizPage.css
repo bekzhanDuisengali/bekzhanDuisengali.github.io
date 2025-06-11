@@ -13,6 +13,14 @@
     background-color: #000;
 }
 
+.quiz-header a {
+    text-decoration: none;
+    color: #fcd303;
+}
+.quiz-header a:hover {
+    color: #FFFF00;
+}
+
 .quiz-header h1 {
     margin: 0;
     color: #FAD02C;
@@ -68,11 +76,17 @@
 
 .sign-up-quiz:hover {
     background-color: #FCFC16;
+    color: black;
+}
+
+.sign-up-quiz a:hover {
+    color: black;
 }
 
 .quiz-content {
     background-color: #fcd303;
     color: #000;
+    padding-bottom: 80px;
 }
 
 .question-container {
@@ -95,7 +109,7 @@
 }
 
 .quiz-content h2 {
-    font-size: 25px;
+    font-size: 29px;
     text-align: left;
     margin-bottom: 10px;
     font-weight: 600;
@@ -107,10 +121,7 @@
 .quiz-navigation {
     display: flex;
     justify-content: space-between;
-    margin-top: 80px;
-    margin-left: 50px;
-    margin-right: 50px;
-
+    margin: 80px 50px 30px;
 }
 
 .previous-button {
@@ -197,5 +208,9 @@
     color: white;
     border: 2px solid #3e8e41;
     transform: scale(1.1);
+}
+
+.selected-option:hover {
+    background-color: #4CAF50;
 }
 

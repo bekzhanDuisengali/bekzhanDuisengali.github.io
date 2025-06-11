@@ -8,7 +8,6 @@
 
 .room-header {
     text-align: center;
-    margin-bottom: 20px;
     font-family: "Raleway", sans-serif;
     font-weight: 600;
 }
@@ -18,9 +17,8 @@
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    max-width: 1200px;
+    max-width: 1100px;
     padding: 0 20px;
-    margin-bottom: 20px;
 }
 
 .dot-icon {
@@ -54,12 +52,14 @@
     font-size: 60px;
     color: black;
     font-family: "Raleway", sans-serif;
+    margin: 0;
 }
 
 .room-header p {
     font-size: 30px;
     color: black;
     font-family: "Raleway", sans-serif;
+    margin: 0;
 }
 
 .room-content {

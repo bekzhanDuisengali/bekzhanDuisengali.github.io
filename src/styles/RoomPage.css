@@ -15,7 +15,6 @@
     padding: 20px;
     border-radius: 10px;
     font-family: "Raleway", sans-serif;
-
 }
 
 .room-title {
@@ -35,14 +34,26 @@
     color: #C8BA9E;
     font-size: 16px;
     cursor: pointer;
-    width: 50px;
-    height: 50px;
+    width: 35px;
+    height: 35px;
     border: none;
     background: #C8BA9E;
     align-items: center;
     margin-bottom: 5px;
     font-family: "Raleway", sans-serif;
+}
 
+.about-btn {
+    margin-top: 3px;
+    width: 25px;
+    height: 25px;
+}
+
+.exit-btn {
+    margin-top: 2px;
+    margin-left: 1px;
+    width: 25px;
+    height: 30px;
 }
 
 .room-controls {
@@ -73,7 +84,7 @@
     padding: 15px;
     width: 280px;
     height: 40px;
-    background: #9E998D;
+    background: #FFFF00;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 40px;
     font-size: 25px;
@@ -110,7 +121,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #86EF55;
+    background: #64ff76;
     border: none;
     padding: 10px;
     border-radius: 50%;
@@ -143,6 +154,11 @@
     height: 300px;
 }
 
+.user-list p {
+    color: #1E1E1E;
+    font-size: 20px;
+}
+
 .user-avatar {
     text-align: center;
 }
@@ -154,14 +170,18 @@
 }
 
 .about-box {
-    background-color: #f0f0f0;
+    background-color: #FFFF00;
+    opacity: 0.7;
     color: #060606;
     padding: 16px;
     margin: 12px;
     border-radius: 12px;
-    font-size: 16px;
+    font-size: 18px;
+    font-weight: bold;
     line-height: 1.6;
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+    width: 350px;
+    font-family: "Raleway", sans-serif;
 }
 
 .countdown-animation {
@@ -184,6 +204,32 @@
     background-color: rgba(0, 255, 0, 0.2);
 
 }
+
+.ready-button-container {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.ready-btn {
+    width: 208px;
+    height: 50px;
+    background: #FFFF00;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 30px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 27px;
+    line-height: 47px;
+    color: #1E1E1E;
+    cursor: pointer;
+    text-decoration: none;
+    font-family: "Raleway", sans-serif;
+}
+
+.ready-btn:hover {
+    transform: scale(1.1);
+}
+
 .session-ended-banner {
     position: fixed;
     top: 30%;

@@ -20,24 +20,26 @@ class App extends Component {
             <Router>
                 <Routes>
                     <Route path="/" element={<Main />} />
-                    <Route
-                        path="/test"
-                        element={
-                            <ProtectedRoute>
-                                <TestPage />
-                            </ProtectedRoute>
-                        }
-                    />
+                    {/*<Route*/}
+                    {/*    path="/test"*/}
+                    {/*    element={*/}
+                    {/*        <ProtectedRoute>*/}
+                    {/*            <TestPage />*/}
+                    {/*        </ProtectedRoute>*/}
+                    {/*    }*/}
+                    {/*/>*/}
+                    <Route path="/test" element={<TestPage />} />
                     <Route path="/quiz/:language" element={<QuizPage />} />
                     <Route path="/language" element={<LanguagePage />} />
-                    <Route
-                        path="/room"
-                        element={
-                            <ProtectedRoute>
-                                <RoomSelectionPage />
-                            </ProtectedRoute>
-                        }
-                    />
+                    {/*<Route*/}
+                    {/*    path="/room"*/}
+                    {/*    element={*/}
+                    {/*        <ProtectedRoute>*/}
+                    {/*            <RoomSelectionPage />*/}
+                    {/*        </ProtectedRoute>*/}
+                    {/*    }*/}
+                    {/*/>*/}
+                    <Route path="/room" element={<RoomSelectionPage />} />
                     <Route path="/login" element={<LoginPage />} />
                     <Route path="/signup" element={<SignupPage />} />
                     <Route path="/roompage" element={<RoomPage />} />

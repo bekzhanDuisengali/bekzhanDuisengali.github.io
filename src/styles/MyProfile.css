@@ -15,7 +15,11 @@
 }
 
 .globe-icon img {
-    width: 30px;
+    width: 40px;
+}
+
+.globe-icon:hover {
+    transform: scale(1.2);
 }
 
 .navigation {

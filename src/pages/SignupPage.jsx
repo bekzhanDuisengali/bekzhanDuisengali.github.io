@@ -65,7 +65,9 @@ const SignupPage = () => {
         <div className="signup-page">
             <header className="navbar-signup">
                 <div className="navbar-left">
-                    <img src={globeYellowIcon} alt="Globe Icon" className="globe-icon-login" />
+                    <a href="/">
+                        <img src={globeYellowIcon} alt="Globe Icon" className="globe-icon-login"/>
+                    </a>
                 </div>
                 <nav className="navbar-link-login">
                     <a href="/room" className="nav-link-login">Select Rooms</a>

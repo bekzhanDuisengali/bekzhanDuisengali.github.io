@@ -305,7 +305,7 @@ const RoomPage = () => {
         <div className="room-container">
             <div className="rooms-header">
                 <button className="info-button" onClick={() => setShowAbout(!showAbout)}>
-                    <img src={aboutIcon} alt="About" />
+                    <img src={aboutIcon} alt="About" className="about-btn"/>
                     <span>About</span>
                 </button>
 
@@ -323,7 +323,7 @@ const RoomPage = () => {
                 <h1 className="room-title">"{topic || "Room Title"}"</h1>
 
                 <button className="exit-button" onClick={handleExit}>
-                    <img src={exitIcon} alt="Exit" />
+                    <img src={exitIcon} alt="Exit" className="exit-btn" />
                     <span>Exit</span>
                 </button>
             </div>
@@ -398,7 +398,7 @@ const RoomPage = () => {
 
             <div className="ready-button-container">
                 {(!isReady || sessionEnded) ? (
-                    <button onClick={handleReady}>
+                    <button onClick={handleReady} className="ready-btn">
                         {isReady ? "Отменить готовность" : "Я готов"}
                     </button>
                 ) : (

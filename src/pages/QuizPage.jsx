@@ -457,12 +457,7 @@ const QuizPage = () => {
     return (
         <div className="quiz-container">
             <div className="quiz-header">
-                <h1 className="quiz-header-title">Quiz</h1>
-                <div className="navbar-quiz">
-                    <Link to="/" className="nav-link-quiz">Home</Link>
-                    <Link to="/about" className="nav-link-quiz">About</Link>
-                    <Link to="/contact" className="nav-link-quiz">Contact</Link>
-                </div>
+                <h1 className="quiz-header-title"><a href="/">Lexio</a></h1>
                 <button className="sign-up-quiz">
                     <Link to="/sign-up" className="sign-up-quiz-link">Sign Up</Link>
                 </button>
